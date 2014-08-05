@@ -20,7 +20,7 @@ namespace CaughtItHere
         }
     
         public int Id { get; set; }
-        public Nullable<int> Name { get; set; }
+        public string Name { get; set; }
     
         public virtual ICollection<Fish> Fish { get; set; }
     }

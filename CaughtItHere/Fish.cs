@@ -24,7 +24,6 @@ namespace CaughtItHere
         public System.DateTime TimeDate { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-        public int UserId { get; set; }
     
         public virtual FishType FishType { get; set; }
     }

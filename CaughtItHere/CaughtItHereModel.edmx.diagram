@@ -4,12 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="11b78c9af3554e3598f0561fe2fc886c" Name="Diagram1">
-        <EntityTypeShape EntityType="CaughtItHereModel.Blog" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CaughtItHereModel.Fish" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="CaughtItHereModel.FishType" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="CaughtItHereModel.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <AssociationConnector Association="CaughtItHereModel.FK_Blog_User" ManuallyRouted="false" />
+      <Diagram DiagramId="19a047ab49ce426080c53d7676a17b18" Name="Diagram1">
+        <EntityTypeShape EntityType="CaughtItHereModel.Blog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CaughtItHereModel.Fish" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CaughtItHereModel.FishType" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="CaughtItHereModel.FK_Fish_FishType" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

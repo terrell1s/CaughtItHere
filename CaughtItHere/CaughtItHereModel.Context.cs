@@ -28,6 +28,5 @@ namespace CaughtItHere
         public virtual DbSet<Blog> Blogs { get; set; }
         public virtual DbSet<Fish> Fish { get; set; }
         public virtual DbSet<FishType> FishTypes { get; set; }
-        public virtual DbSet<User> Users { get; set; }
     }
 }
