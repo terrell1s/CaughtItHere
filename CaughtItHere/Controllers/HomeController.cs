@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CaughtItHere.Models;
 
 namespace CaughtItHere.Controllers
 {
@@ -10,6 +11,8 @@ namespace CaughtItHere.Controllers
     {
         public ActionResult Index()
         {
+            List<FishType> theTypes = new List<FishType>();
+            
             return View();
         }
 

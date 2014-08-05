@@ -179,6 +179,8 @@
       <DependentUpon>CaughtItHereModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\FishController.cs" />
+    <Compile Include="Controllers\FishTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Fish.cs">
       <DependentUpon>CaughtItHereModel.tt</DependentUpon>
@@ -264,6 +266,16 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Fish\Create.cshtml" />
+    <Content Include="Views\Fish\Delete.cshtml" />
+    <Content Include="Views\Fish\Details.cshtml" />
+    <Content Include="Views\Fish\Edit.cshtml" />
+    <Content Include="Views\Fish\Index.cshtml" />
+    <Content Include="Views\FishTypes\Create.cshtml" />
+    <Content Include="Views\FishTypes\Delete.cshtml" />
+    <Content Include="Views\FishTypes\Details.cshtml" />
+    <Content Include="Views\FishTypes\Edit.cshtml" />
+    <Content Include="Views\FishTypes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
