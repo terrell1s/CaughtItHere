@@ -179,7 +179,6 @@
       <DependentUpon>CaughtItHereModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FishTypeList.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Fish.cs">
       <DependentUpon>CaughtItHereModel.tt</DependentUpon>
