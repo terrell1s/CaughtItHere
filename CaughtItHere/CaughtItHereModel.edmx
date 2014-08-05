@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CaughtItHereModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Blog" Type="text" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="text" />
+        </EntityType>
+        <EntityType Name="Fish">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FishTypeId" Type="int" Nullable="false" />
+          <Property Name="Length" Type="int" Nullable="false" />
+          <Property Name="Image" Type="image" />
+          <Property Name="LureType" Type="varchar" MaxLength="50" />
+          <Property Name="ImageLure" Type="image" />
+          <Property Name="Comment" Type="text" />
+          <Property Name="TimeDate" Type="datetime" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FishType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="int" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Blog_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fish_FishType">
+          <End Role="FishType" Type="Self.FishType" Multiplicity="1" />
+          <End Role="Fish" Type="Self.Fish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fish">
+              <PropertyRef Name="FishTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CaughtItHereModelStoreContainer">
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Fish" EntityType="Self.Fish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FishType" EntityType="Self.FishType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Blog_User" Association="Self.FK_Blog_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Blog" EntitySet="Blog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fish_FishType" Association="Self.FK_Fish_FishType">
+            <End Role="FishType" EntitySet="FishType" />
+            <End Role="Fish" EntitySet="Fish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CaughtItHereModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Blog1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Blog_User" FromRole="Blog" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Fish">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FishTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Length" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="LureType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageLure" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FishType" Relationship="Self.FK_Fish_FishType" FromRole="Fish" ToRole="FishType" />
+        </EntityType>
+        <EntityType Name="FishType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="Int32" />
+          <NavigationProperty Name="Fish" Relationship="Self.FK_Fish_FishType" FromRole="FishType" ToRole="Fish" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Blogs" Relationship="Self.FK_Blog_User" FromRole="User" ToRole="Blog" />
+        </EntityType>
+        <Association Name="FK_Blog_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Blog" Type="Self.Blog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Blog">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Fish_FishType">
+          <End Role="FishType" Type="Self.FishType" Multiplicity="1" />
+          <End Role="Fish" Type="Self.Fish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Fish">
+              <PropertyRef Name="FishTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CaughtItHereEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Blogs" EntityType="Self.Blog" />
+          <EntitySet Name="Fish" EntityType="Self.Fish" />
+          <EntitySet Name="FishTypes" EntityType="Self.FishType" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Blog_User" Association="Self.FK_Blog_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Blog" EntitySet="Blogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Fish_FishType" Association="Self.FK_Fish_FishType">
+            <End Role="FishType" EntitySet="FishTypes" />
+            <End Role="Fish" EntitySet="Fish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CaughtItHereModelStoreContainer" CdmEntityContainer="CaughtItHereEntities">
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="CaughtItHereModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Blog1" ColumnName="Blog" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Fish">
+            <EntityTypeMapping TypeName="CaughtItHereModel.Fish">
+              <MappingFragment StoreEntitySet="Fish">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FishTypeId" ColumnName="FishTypeId" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="LureType" ColumnName="LureType" />
+                <ScalarProperty Name="ImageLure" ColumnName="ImageLure" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="TimeDate" ColumnName="TimeDate" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FishTypes">
+            <EntityTypeMapping TypeName="CaughtItHereModel.FishType">
+              <MappingFragment StoreEntitySet="FishType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CaughtItHereModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

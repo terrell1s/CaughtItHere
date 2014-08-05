@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -158,8 +160,32 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Blog.cs">
+      <DependentUpon>CaughtItHereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaughtItHereModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CaughtItHereModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaughtItHereModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CaughtItHereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CaughtItHereModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CaughtItHereModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Fish.cs">
+      <DependentUpon>CaughtItHereModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FishType.cs">
+      <DependentUpon>CaughtItHereModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +193,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="User.cs">
+      <DependentUpon>CaughtItHereModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -177,6 +206,23 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="CaughtItHereModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CaughtItHereModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="CaughtItHereModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CaughtItHereModel.edmx</DependentUpon>
+      <LastGenOutput>CaughtItHereModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CaughtItHereModel.edmx.diagram">
+      <DependentUpon>CaughtItHereModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="CaughtItHereModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CaughtItHereModel.edmx</DependentUpon>
+      <LastGenOutput>CaughtItHereModel.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -229,6 +275,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
