@@ -179,6 +179,7 @@
       <DependentUpon>CaughtItHereModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\FishController.cs" />
     <Compile Include="Controllers\FishTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -276,6 +277,11 @@
     <Content Include="Views\FishTypes\Details.cshtml" />
     <Content Include="Views\FishTypes\Edit.cshtml" />
     <Content Include="Views\FishTypes\Index.cshtml" />
+    <Content Include="Views\Blog\Create.cshtml" />
+    <Content Include="Views\Blog\Delete.cshtml" />
+    <Content Include="Views\Blog\Details.cshtml" />
+    <Content Include="Views\Blog\Edit.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
