@@ -50,11 +50,11 @@ namespace CaughtItHere
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "871307794610-d8mvluv9hm0os4357sksbv8qlmgv37do.apps.googleusercontent.com",
+                ClientSecret = "lDeI3ZAVmdilaz1G10xCSNAh"
+            });
         }
     }
 }
