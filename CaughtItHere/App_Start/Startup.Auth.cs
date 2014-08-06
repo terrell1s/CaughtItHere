@@ -46,9 +46,9 @@ namespace CaughtItHere
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "826162630761395",
+               appSecret: "b0a5342dc5f099ca5bfaa003bed16960");
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
