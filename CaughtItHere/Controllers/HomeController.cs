@@ -7,6 +7,7 @@ using CaughtItHere.Models;
 
 namespace CaughtItHere.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public ActionResult Index()
