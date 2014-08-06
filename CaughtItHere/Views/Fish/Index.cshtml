@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.FishTypeId)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Length)
         </th>
         <th>
@@ -46,6 +49,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FishTypeId)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Length)
         </td>
