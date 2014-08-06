@@ -31,6 +31,18 @@
 
         var map = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
+        var getFishInfo = "<table>" +
+                "<tr><td>FishType</td><td><select id='fishType'>" +
+                "<tr><td>Date Caught</td><td><input type='text' id='dateTime'/></td></tr>" +
+                
+                
+           
+                
+                "<tr><td></td><td><input type='button' value='Save & Close' onclick='saveData()'/></td></tr>";
+
+        infowindow = new google.maps.InfoWindow({
+            content: getFishInfo
+        });
 
         var marker = new google.maps.Marker({ position: myCenter});
 
@@ -42,7 +54,7 @@
             var lat = event.latLng.lat();
             var lng = event.latLng.lng();
             // populate yor box/field with lat, lng
-            alert("Lat=" + lat + "; Lng=" + lng);
+           
         });
 
         function placeMarker(location) {
@@ -51,9 +63,9 @@
                 map: map,
             });
             var infowindow = new google.maps.InfoWindow({
-                content: 'Latitude: ' + location.lat() +
-                '<br>Longitude: ' + location.lng()
+                content: getFishInfo
             });
+         
 
 
             infowindow.open(map, marker);
