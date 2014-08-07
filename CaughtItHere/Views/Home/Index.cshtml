@@ -20,34 +20,10 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1BssRYwTrrNmKj7nTR9Do6DanISnxpK8"></script>
 
 <script type="text/javascript">
-    var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
-    
+    var tempLat;
+    var tempLng;
 
-    function initialize() {
-        var mapOptions = {
-            center: myCenter,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.SATELLITE
-        };
-
-    var map = new google.maps.Map(document.getElementById("map-canvas"),
-               mapOptions);
-
-
-    function placeMarker(location) {
-        var marker = new google.maps.Marker({
-            position: location,
-            map: map,
-        });
-
-        var infowindow = new google.maps.InfoWindow({
-            content: getFishInfo
-        });
-
-        infowindow.open(map, marker);
-    }
-
-    function saveData() {
+    function saveData( x, y ) {
         var fishType = document.getElementById("fishType").value;
         var dateCaught = document.getElementById("dateTime").value;
         var length = document.getElementById("length").value;
@@ -55,51 +31,62 @@
         var lureUsed = document.getElementById("lure").value;
         var fishImage = document.getElementById("fishImage").value;
         var lureImage = document.getElementById("lureImage").value;
-        var lat = marker.getPosition().lat;
-        var long = marker.getPosition().long;
-        alert("here");
-
+        var lat = x;
+        var long = y;
+        alert("Fish Added");
     };
-
-    
-
-
-
-    var marker = new google.maps.Marker({ position: myCenter });
-    marker.setMap(map);
-
-
-    google.maps.event.addListener(map, 'rightclick', function (event) {
-        placeMarker(event.latLng);
-        //var lat = event.latLng.lat();
-        //var lng = event.latLng.lng();
-        // populate yor box/field with lat, lng
-
-    });
-
-        var getFishInfo = "<table>" +
-                "<tr><td>FishType</td><td><select id='fishType'></td></tr>" +
-                "<tr><td>Date Caught</td><td><input type='datetime' id='dateTime'/></td></tr>" +
-                "<tr><td>Length</td><td><input type='number' id='length'/></td><tr>" +
-                "<tr><td>Weight</td><td><input type='number' id='weight'/></td><tr>" +
-                "<tr><td>Lure Uesd</td><td><input type='text' id='lure'/></td><tr>" +
-                "<tr><td>Picture of Fish</td><td><input type='image' id='fishImage'/></td><tr>" +
-                "<tr><td>Picture of Lure</td><td><input type='image' id='lureImage'/></td><tr>" +
-                "<tr><td></td><td><input type='button' value='Save/CLose' onclick='saveData()' id='SaveClose'/></td></tr>"
-            
-
-        //infowindow = new google.maps.InfoWindow({
-        //    content: getFishInfo
-        //});
-
-
-
-  
-       
-    
-    }
-        google.maps.event.addDomListener(window, 'load', initialize);
    
+    function initialize() {
+        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
+        var mapOptions = {
+            center: myCenter,
+            zoom: 16, mapTypeId:
+            google.maps.MapTypeId.SATELLITE
+
+        };
+  
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        var marker = new google.maps.Marker({ position: myCenter });
+        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
+       
+        marker.setMap(map);
+
+        function placeMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+            });
+            
+            var infowindow = new google.maps.InfoWindow({
+                content: getFishInfo
+            });
+          
+            
+            
+            infowindow.open(map, marker);
+            }
+
+           google.maps.event.addListener(map, 'rightclick', function (event) {
+               placeMarker(event.latLng);
+               tempLat = event.latLng.lat();
+               tempLng = event.latLng.lng();
+           });
+
+      
+        
+        
+        var getFishInfo = "<table>" +
+            "<tr><td>FishType</td><td><select id='fishType'></td></tr>" +
+            "<tr><td>Date Caught</td><td><input type='datetime' id='dateTime'/></td></tr>" +
+            "<tr><td>Length</td><td><input type='number' id='length'/></td><tr>" +
+            "<tr><td>Weight</td><td><input type='number' id='weight'/></td><tr>" +
+            "<tr><td>Lure Uesd</td><td><input type='text' id='lure'/></td><tr>" +
+            "<tr><td>Picture of Fish</td><td><input type='image' id='fishImage'/></td><tr>" +
+            "<tr><td>Picture of Lure</td><td><input type='image' id='lureImage'/></td><tr>" +
+            "<tr><td></td><td><input type='button' value='Save/CLose' onclick='saveData(tempLat, tempLng);' id='SaveClose'/></td></tr>"
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
 </script>
 
 
