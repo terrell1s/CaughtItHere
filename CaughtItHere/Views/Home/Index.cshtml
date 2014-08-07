@@ -35,17 +35,10 @@
 
     }
 
-    var createNewFish = "<input type='button' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/>";
+    var createNewFish = "<p>Add new fish here?</p>" +
+                        "<input type='button' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/>";
 
-    //var getFishInfo = "<table>" +
-    //  "<tr><td>FishType</td><td><select id='fishType'></td></tr>" +
-    //  "<tr><td>Date Caught</td><td><input type='datetime' id='dateTime'/></td></tr>" +
-    //  "<tr><td>Length</td><td><input type='number' id='length'/></td><tr>" +
-    //  "<tr><td>Weight</td><td><input type='number' id='weight'/></td><tr>" +
-    //  "<tr><td>Lure Uesd</td><td><input type='text' id='lure'/></td><tr>" +
-    //  "<tr><td>Picture of Fish</td><td><input type='image' id='fishImage'/></td><tr>" +
-    //  "<tr><td>Picture of Lure</td><td><input type='image' id='lureImage'/></td><tr>" +
-    //  "<tr><td></td><td><input type='button' value='Save' onclick='saveData(tempLat, tempLng)' id='SaveClose'/></td></tr>";
+ 
 
     function create_marker(tempLocation, theMap) {
 
@@ -61,7 +54,7 @@
             content: createNewFish
 
         });
-        var closeWindow = infowindow.close();
+       
         infowindow.open(theMap, marker);
 
 
@@ -105,10 +98,10 @@
 <div class="container-fluid" id="main">
     <div class="row">
         <div class="col-xs-7" >
-            <button type="button" class="btn btn-primary btn-lg" style="margin-top: 200px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Fish by Type</strong></button>
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top: 100px;padding:50px 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Fish by Type</strong></button>
             <br />
             <div class="col-xs-7">
-                <button type="button" class="btn btn-primary btn-lg" style="margin-top: 200px; ; background-color: #ffffff; color: #ff6a00; border-color: #ff6a00"><strong>Fish by Date</strong></button>
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top: 100px;padding:50px 50px;background-color:#ffffff; color: #ff6a00; border-color: #ff6a00"><strong>Fish by Date</strong></button>
             </div>
 
         </div>
