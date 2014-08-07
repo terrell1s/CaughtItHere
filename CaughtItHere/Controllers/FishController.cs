@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CaughtItHere;
-using MvcCheckBoxList;
 
 namespace CaughtItHere.Controllers
 {
@@ -35,21 +34,12 @@ namespace CaughtItHere.Controllers
                 return HttpNotFound();
             }
             return View(fish);
-
-        }
-        // GET: Fish/byFishType
-        public ActionResult byTypeFish()
-        {
-            ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
-            return View();
         }
 
         // GET: Fish/Create
-        public ActionResult Create(double fishLat, double fishLng )
+        public ActionResult Create()
         {
-            
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
-            ViewBag.Latitude = fishLat;
             return View();
         }
 

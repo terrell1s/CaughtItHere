@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CaughtItHere.Models;
-using MvcCheckBoxList;
 
 namespace CaughtItHere.Controllers
 {
@@ -29,12 +28,6 @@ namespace CaughtItHere.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
-
-        public ActionResult SaveChanges()
-        {
-            ViewBag.Message = "Your page to save changes.";
             return View();
         }
     }

@@ -1,6 +1,4 @@
-﻿
-
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
@@ -101,12 +99,19 @@
 </script>
 
 
-<div id="map-canvas" style="width:1000px; height:600px;"></div>
+<div id="map-canvas" style="width:1000px; height:600px;">
+
+</div>
 <div class="container-fluid" id="main">
     <div class="row">
-        <div class="col-xs-7" id="left">
+        <div class="col-xs-7" >
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top: 200px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Fish by Type</strong></button>
+            <br />
+            <div class="col-xs-7">
+                <button type="button" class="btn btn-primary btn-lg" style="margin-top: 200px; ; background-color: #ffffff; color: #ff6a00; border-color: #ff6a00"><strong>Fish by Date</strong></button>
+            </div>
+
         </div>
-        <div class="col-xs-5"><!--map-canvas will be postioned here--></div>
     </div>
 </div>
 

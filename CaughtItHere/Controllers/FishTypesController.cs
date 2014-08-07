@@ -7,14 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CaughtItHere;
-using MvcCheckBoxList;
 
 namespace CaughtItHere.Controllers
 {
     public class FishTypesController : Controller
     {
-        public IEnumerable<FishType> ByFishType { get; set; }
-
         private CaughtItHereEntities db = new CaughtItHereEntities();
 
         // GET: FishTypes
