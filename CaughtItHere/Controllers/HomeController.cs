@@ -30,5 +30,11 @@ namespace CaughtItHere.Controllers
 
             return View();
         }
+
+        public ActionResult SaveChanges()
+        {
+            ViewBag.Message = "Your page to save changes.";
+            return View();
+        }
     }
 }
