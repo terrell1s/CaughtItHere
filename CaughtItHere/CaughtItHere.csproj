@@ -40,6 +40,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcCheckBoxList">
+      <HintPath>..\packages\MvcCheckBoxList.1.4.4.5\lib\net45\MvcCheckBoxList.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -283,6 +286,7 @@
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Home\SaveChanges.cshtml" />
+    <Content Include="Views\Fish\byTypeFish.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
