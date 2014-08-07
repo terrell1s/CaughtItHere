@@ -23,19 +23,55 @@
     var tempLat;
     var tempLng;
 
-    function saveData( x, y ) {
+
+
+    function saveData(x, y) {
         var fishType = document.getElementById("fishType").value;
         var dateCaught = document.getElementById("dateTime").value;
         var length = document.getElementById("length").value;
-        var weight = document.getElementById("weight").value;
         var lureUsed = document.getElementById("lure").value;
         var fishImage = document.getElementById("fishImage").value;
         var lureImage = document.getElementById("lureImage").value;
-        var lat = x;
-        var long = y;
-        alert("Fish Added");
-    };
-   
+        var fishLat = x;
+        var fishLng = y;
+        alert("Fish successfully added!");
+
+    }
+
+    var getFishInfo = "<table>" +
+      "<tr><td>FishType</td><td><select id='fishType'></td></tr>" +
+      "<tr><td>Date Caught</td><td><input type='datetime' id='dateTime'/></td></tr>" +
+      "<tr><td>Length</td><td><input type='number' id='length'/></td><tr>" +
+      "<tr><td>Weight</td><td><input type='number' id='weight'/></td><tr>" +
+      "<tr><td>Lure Uesd</td><td><input type='text' id='lure'/></td><tr>" +
+      "<tr><td>Picture of Fish</td><td><input type='image' id='fishImage'/></td><tr>" +
+      "<tr><td>Picture of Lure</td><td><input type='image' id='lureImage'/></td><tr>" +
+      "<tr><td></td><td><input type='button' value='Save' onclick='saveData(tempLat, tempLng)' id='SaveClose'/></td></tr>";
+
+    function create_marker(tempLocation, theMap) {
+
+
+        var marker = new google.maps.Marker({
+            position: tempLocation,
+            map: theMap,
+
+        });
+
+
+        var infowindow = new google.maps.InfoWindow({
+            content: getFishInfo
+
+        });
+        var closeWindow = infowindow.close();
+        infowindow.open(theMap, marker);
+
+
+    }
+
+
+
+
+
     function initialize() {
         var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
         var mapOptions = {
@@ -44,49 +80,23 @@
             google.maps.MapTypeId.SATELLITE
 
         };
-  
+
         var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
         var marker = new google.maps.Marker({ position: myCenter });
         var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
-       
-        marker.setMap(map);
 
-        function placeMarker(location) {
-            var marker = new google.maps.Marker({
-                position: location,
-                map: map,
-            });
-            
-            var infowindow = new google.maps.InfoWindow({
-                content: getFishInfo
-            });
-          
-            
-            
-            infowindow.open(map, marker);
-            }
 
-           google.maps.event.addListener(map, 'rightclick', function (event) {
-               placeMarker(event.latLng);
-               tempLat = event.latLng.lat();
-               tempLng = event.latLng.lng();
-           });
+        google.maps.event.addListener(map, 'rightclick', function (event) {
+            create_marker(event.latLng, map)
+            tempLat = event.latLng.lat();
+            tempLng = event.latLng.lng();
+        });
 
-      
-        
-        
-        var getFishInfo = "<table>" +
-            "<tr><td>FishType</td><td><select id='fishType'></td></tr>" +
-            "<tr><td>Date Caught</td><td><input type='datetime' id='dateTime'/></td></tr>" +
-            "<tr><td>Length</td><td><input type='number' id='length'/></td><tr>" +
-            "<tr><td>Weight</td><td><input type='number' id='weight'/></td><tr>" +
-            "<tr><td>Lure Uesd</td><td><input type='text' id='lure'/></td><tr>" +
-            "<tr><td>Picture of Fish</td><td><input type='image' id='fishImage'/></td><tr>" +
-            "<tr><td>Picture of Lure</td><td><input type='image' id='lureImage'/></td><tr>" +
-            "<tr><td></td><td><input type='button' value='Save/CLose' onclick='saveData(tempLat, tempLng);' id='SaveClose'/></td></tr>"
+
     }
 
     google.maps.event.addDomListener(window, 'load', initialize);
+
 </script>
 
 
@@ -96,4 +106,5 @@
     <div id="map-canvas" style="width:720px; height:480px;"></div>
 
 </div>
+
 
