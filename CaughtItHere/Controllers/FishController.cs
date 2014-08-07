@@ -37,18 +37,19 @@ namespace CaughtItHere.Controllers
         }
 
         // GET: Fish/Create
-<<<<<<< HEAD
+
         public ActionResult Create(double fishLat, double fishLng)
         {
             ViewBag.fishLat = fishLat;
             ViewBag.fishLng = fishLng;
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
-            
-=======
+
+           return View();
+        }
         public ActionResult Create()
         {
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
->>>>>>> origin/master
+
             return View();
         }
 
