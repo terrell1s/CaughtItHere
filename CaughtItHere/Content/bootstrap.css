@@ -7,9 +7,12 @@
 */
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 html {
-  font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+}
+
+*{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 body {
   margin: 0;
@@ -4531,8 +4534,8 @@ a.list-group-item.active > .badge,
   margin-left: 3px;
 }
 .jumbotron {
-  padding: 30px;
-  margin-bottom: 30px;
+  padding: 0;
+  margin-bottom: 0;
   color: inherit;
   background-color: #eeeeee;
 }
@@ -6293,4 +6296,30 @@ button.close {
 .panel-danger .panel-title,
 .panel-info .panel-title {
   color: #fff;
+}
+body{
+  	height:100%;
+}
+
+body{
+  	padding-top:100px; /*padding for navbar*/
+}
+
+
+#main, #main>.row {
+	height:90%;
+}
+
+#left {
+	height:100%;
+    overflow-y:scroll;
+}
+
+#map-canvas {
+	width:50%;
+    height:calc(85% - 0);
+    position:absolute;
+    right:0;
+    top:60px;
+    bottom:0; 
 }
