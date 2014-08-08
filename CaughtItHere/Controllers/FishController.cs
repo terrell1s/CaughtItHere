@@ -68,7 +68,7 @@ namespace CaughtItHere.Controllers
             {
                 db.Fish.Add(fish);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name", fish.FishTypeId);
