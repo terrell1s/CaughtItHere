@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="19a047ab49ce426080c53d7676a17b18" Name="Diagram1">
-        <EntityTypeShape EntityType="CaughtItHereModel.Blog" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CaughtItHereModel.Blog" Width="1.5" PointX="5.125" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CaughtItHereModel.Fish" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CaughtItHereModel.FishType" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <AssociationConnector Association="CaughtItHereModel.FK_Fish_FishType" ManuallyRouted="false" />
