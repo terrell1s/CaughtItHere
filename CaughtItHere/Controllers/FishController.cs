@@ -22,7 +22,7 @@ namespace CaughtItHere.Controllers
             return View(fish.ToList());
         }
         // GET: Fish
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, string searchString2)
         {
             var fishes = from f in db.Fish
                          select f;
@@ -31,6 +31,13 @@ namespace CaughtItHere.Controllers
             {
                 fishes = fishes.Where(f => f.FishTypeId.ToString().ToUpper().Contains(searchString.ToUpper()));
                // fishes = fishes.Where(f => f.Latitude.ToString().ToUpper().Contains(searchString.ToUpper()));
+
+            }
+
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                fishes = fishes.Where(f => f.TimeDate.ToString().ToUpper().Contains(searchString2.ToUpper()));
+                // fishes = fishes.Where(f => f.Latitude.ToString().ToUpper().Contains(searchString2.ToUpper()));
 
             }
 
@@ -59,12 +66,15 @@ namespace CaughtItHere.Controllers
 
         public ActionResult Create(double fishLat, double fishLng)
         {
-            ViewBag.fishLat = fishLat;
-            ViewBag.fishLng = fishLng;
-            
+
+
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
 
-           return View();
+            var fish = new Fish();
+            fish.Latitude = fishLat;
+            fish.Longitude = fishLng;
+
+           return View(fish);
         }
 
         // POST: Fish/Create
@@ -72,7 +82,7 @@ namespace CaughtItHere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FishTypeId,Length,Image,LureType,ImageLure,Comment,TimeDate,Latitude,Longitude,Weight")] Fish fish)
+        public ActionResult Create([Bind(Include = "Id,FishTypeId,Length,Weight,Image,LureType,ImageLure,Comment,TimeDate,Latitude,Longitude")] Fish fish)
         {
             if (ModelState.IsValid)
             {
