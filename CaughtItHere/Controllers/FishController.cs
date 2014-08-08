@@ -46,12 +46,6 @@ namespace CaughtItHere.Controllers
 
            return View();
         }
-        public ActionResult Create()
-        {
-            ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
-
-            return View();
-        }
 
         // POST: Fish/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
