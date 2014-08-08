@@ -12,6 +12,7 @@ namespace CaughtItHere.Controllers
 {
     public class FishController : Controller
     {
+
         private CaughtItHereEntities db = new CaughtItHereEntities();
 
         //GET: Fish/byFishType
