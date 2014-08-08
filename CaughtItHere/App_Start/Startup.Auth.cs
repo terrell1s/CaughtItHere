@@ -46,15 +46,15 @@ namespace CaughtItHere
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "826162630761395",
-            //   appSecret: "b0a5342dc5f099ca5bfaa003bed16960");
+            app.UseFacebookAuthentication(
+               appId: "826162630761395",
+               appSecret: "b0a5342dc5f099ca5bfaa003bed16960");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "871307794610-d8mvluv9hm0os4357sksbv8qlmgv37do.apps.googleusercontent.com",
-            //    ClientSecret = "lDeI3ZAVmdilaz1G10xCSNAh"
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "871307794610-d8mvluv9hm0os4357sksbv8qlmgv37do.apps.googleusercontent.com",
+                ClientSecret = "lDeI3ZAVmdilaz1G10xCSNAh"
+            });
         }
     }
 }
