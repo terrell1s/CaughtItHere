@@ -46,12 +46,12 @@ namespace CaughtItHere.Controllers
 
         public ActionResult Create(double fishLat, double fishLng)
         {
+           
+            ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
             ViewBag.fishLat = fishLat;
             ViewBag.fishLng = fishLng;
             
-            ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
-
-           return View();
+            return View();
         }
 
         // POST: Fish/Create
