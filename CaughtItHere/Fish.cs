@@ -27,7 +27,7 @@ namespace CaughtItHere
         public byte[] ImageLure { get; set; }
         public string Comment { get; set; }
 
-        [Required, DataType(DataType.Date)]
+        [Required,DataType(DataType.Date)]
         //[Range(typeof(DateTime), DateTime.Today.AddMonths(-3).ToShortDateString(), DateTime.Now.Date.ToShortDateString())]
         public System.DateTime TimeDate { get; set; }
         [Range(-90, 90), Required]
@@ -36,7 +36,7 @@ namespace CaughtItHere
         public double Longitude { get; set; }
         [Range(0,1000)]
         public Nullable<int> Weight { get; set; }
-        [Required]
+        
         public virtual FishType FishType { get; set; }
     }
 }

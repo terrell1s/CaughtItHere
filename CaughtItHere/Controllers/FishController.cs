@@ -48,10 +48,13 @@ namespace CaughtItHere.Controllers
         {
            
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
-            ViewBag.fishLat = fishLat;
-            ViewBag.fishLng = fishLng;
+           
+
+            var fish = new Fish();
+            fish.Latitude = fishLat;
+            fish.Longitude = fishLng;
             
-            return View();
+            return View(fish);
         }
 
         // POST: Fish/Create
