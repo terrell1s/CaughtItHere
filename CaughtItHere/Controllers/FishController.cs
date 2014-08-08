@@ -12,7 +12,6 @@ namespace CaughtItHere.Controllers
 {
     public class FishController : Controller
     {
-
         private CaughtItHereEntities db = new CaughtItHereEntities();
 
         //GET: Fish/byFishType
@@ -47,14 +46,12 @@ namespace CaughtItHere.Controllers
 
         public ActionResult Create(double fishLat, double fishLng)
         {
-           
+            ViewBag.fishLat = fishLat;
+            ViewBag.fishLng = fishLng;
+            
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name");
-            
-            var fish = new Fish();
-            fish.Latitude = fishLat;
-            fish.Longitude = fishLng;
-            
-            return View(fish);
+
+           return View();
         }
 
         // POST: Fish/Create
@@ -62,7 +59,7 @@ namespace CaughtItHere.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FishTypeId,Length,Weight,Image,LureType,ImageLure,Comment,TimeDate,Latitude,Longitude")] Fish fish)
+        public ActionResult Create([Bind(Include = "Id,FishTypeId,Length,Image,LureType,ImageLure,Comment,TimeDate,Latitude,Longitude,Weight")] Fish fish)
         {
             if (ModelState.IsValid)
             {
