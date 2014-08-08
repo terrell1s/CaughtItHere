@@ -4,6 +4,14 @@
     ViewBag.Title = "Index";
 }
 
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <h2>Index</h2>
 
 <p>

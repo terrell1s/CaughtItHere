@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CaughtItHere;
+using CaughtItHere.Models;
 
 namespace CaughtItHere.Controllers
 {
@@ -21,10 +22,21 @@ namespace CaughtItHere.Controllers
             return View(fish.ToList());
         }
         // GET: Fish
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var fish = db.Fish.Include(f => f.FishType);
-            return View(fish.ToList());
+            var fishes = from f in db.Fish
+                         select f;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                fishes = fishes.Where(f => f.Latitude.ToString().ToUpper().Contains(searchString.ToUpper()));
+
+            }
+
+            return View(fishes.ToList());
+
+            //var fish = db.Fish.Include(f => f.FishType);
+            //return View(fish.ToList());
         }
 
         // GET: Fish/Details/5
@@ -65,7 +77,7 @@ namespace CaughtItHere.Controllers
             {
                 db.Fish.Add(fish);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
             }
 
             ViewBag.FishTypeId = new SelectList(db.FishTypes, "Id", "Name", fish.FishTypeId);
