@@ -97,7 +97,8 @@
     google.maps.event.addDomListener(window, 'load', initialize);
 
 </script>
-
+    
+    @Html.TextBox("FisyByDate", DateTime.Now, new { @class = "form-control input-sm", @data_provide = "datepicker" })
 
 <div id="map-canvas" style="width:1000px; height:600px;">
 
@@ -105,17 +106,29 @@
 <div class="container-fluid" id="main">
     <div class="row">
         <div class="col-xs-7" >
-            <button type="button" class="btn btn-primary btn-lg" style="margin-top: 200px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Fish by Type</strong></button>
+            <button type="button" class="FishByType" style="margin-top: 200px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Fish by Type</strong></button>
             <br />
             <div class="col-xs-7">
-                <button type="button" class="btn btn-primary btn-lg" style="margin-top: 200px; ; background-color: #ffffff; color: #ff6a00; border-color: #ff6a00"><strong>Fish by Date</strong></button>
+                <button type="button" class="FishByDate" style="margin-top: 200px;background-color: #ffffff; color: #ff6a00; border-color: #ff6a00"><strong>Fish by Date</strong></button>
             </div>
 
         </div>
     </div>
 </div>
 
-    
+    <head><script language="JavaScript" src="ts_picker.js">
+
+        //Script by Denis Gritcyuk: tspicker@yahoo.com
+        //Submitted to JavaScript Kit (http://javascriptkit.com)
+        //Visit http://javascriptkit.com for this script
+
+</script></head>
+<body>
+    <form name="tstest" method="post">
+        <input type="Text" name="timestamp" value="">
+        <a href="javascript:show_calendar('document.tstest.timestamp', document.tstest.timestamp.value);"><img src="cal.gif" width="16" height="16" border="0" alt="Click Here to Pick up the timestamp"></a>
+    </form>
+</body>
       
            
 

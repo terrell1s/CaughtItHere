@@ -14,6 +14,12 @@ namespace CaughtItHere.Controllers
     {
         private CaughtItHereEntities db = new CaughtItHereEntities();
 
+        //GET: Fish/byFishType
+        public ActionResult FishByType()
+        {
+            var fish = db.Fish.Include(f => f.FishType);
+            return View(fish.ToList());
+        }
         // GET: Fish
         public ActionResult Index()
         {
