@@ -3,8 +3,51 @@
 }
 <h2>@ViewBag.Title.</h2>
 
-<p><strong>Caught it here</strong><em> is a new, innovative app</em> created to track and showcase those big catches.<br /> 
+
+    <head>
+        <style>
+            #map_canvas {
+                width: 500px;
+                height: 400px;
+            }
+        </style>
+        <script src="https://maps.googleapis.com/maps/api/js"></script>
+        <script>
+            function initialize() {
+
+                var map_canvas = document.getElementById('map_canvas');
+                var map_options = {
+                    center: new google.maps.LatLng(42.335882, -83.050456),
+                    zoom: 16,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                }
+                var map = new google.maps.Map(map_canvas, map_options)
+                var myLatlng = new google.maps.LatLng(42.335882, -83.050456);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: 'Hello World!',
+                    icon: 'https://maps.google.com/mapfiles/kml/shapes/' + 'dining.png'
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+    </head>
+    <body>
+        <p>
+    <strong>Caught it here</strong><em> is a new, innovative app</em> created to track and showcase those big catches.<br />
     The app is currently dedicated to the michgan area, but we hope to be able to support the world in the future. <br />
     Use the app to keep track your own <strong>personal hotspots</strong>, see which <strong>areas are trending</strong>,<br />
-     or to even <strong>find a new spot</strong> for fishing. Feel Free to <em>brag a bit</em> and upload a picture of that big mouth bass,<br />
-     then tell us all about it!</p>
+    or to even <strong>find a new spot</strong> for fishing. Feel Free to <em>brag a bit</em> and upload a picture of that big mouth bass,<br />
+    then tell us all about it!
+<p>
+    <div id="map_canvas"></div>
+</body>
+
+
+    <address>
+        1570 Woodward Ave<br />
+        Detroit, Mi 48226<br />
+        <abbr title="Phone">P:</abbr>
+        111.228.4481(Caught1)
+    </address>
