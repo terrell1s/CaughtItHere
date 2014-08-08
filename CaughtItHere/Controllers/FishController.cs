@@ -22,7 +22,7 @@ namespace CaughtItHere.Controllers
             return View(fish.ToList());
         }
         // GET: Fish
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, string searchString2)
         {
             var fishes = from f in db.Fish
                          select f;
@@ -31,6 +31,13 @@ namespace CaughtItHere.Controllers
             {
                 fishes = fishes.Where(f => f.FishTypeId.ToString().ToUpper().Contains(searchString.ToUpper()));
                // fishes = fishes.Where(f => f.Latitude.ToString().ToUpper().Contains(searchString.ToUpper()));
+
+            }
+
+            if (!String.IsNullOrEmpty(searchString2))
+            {
+                fishes = fishes.Where(f => f.TimeDate.ToString().ToUpper().Contains(searchString2.ToUpper()));
+                // fishes = fishes.Where(f => f.Latitude.ToString().ToUpper().Contains(searchString2.ToUpper()));
 
             }
 
