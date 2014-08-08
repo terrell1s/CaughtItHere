@@ -11,32 +11,21 @@ namespace CaughtItHere
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-  
+    
     public partial class Fish
     {
-
         public int Id { get; set; }
-        [Required]
         public int FishTypeId { get; set; }
-        [Range(0, 120), Required]
         public int Length { get; set; }
         public byte[] Image { get; set; }
         public string LureType { get; set; }
         public byte[] ImageLure { get; set; }
         public string Comment { get; set; }
-
-        [Required,DataType(DataType.Date)]
-        //[Range(typeof(DateTime), DateTime.Today.AddMonths(-3).ToShortDateString(), DateTime.Now.Date.ToShortDateString())]
         public System.DateTime TimeDate { get; set; }
-        [Range(-90, 90), Required]
         public double Latitude { get; set; }
-        [Range(-180, 180), Required]
         public double Longitude { get; set; }
-        [Range(0,1000)]
         public Nullable<int> Weight { get; set; }
-        
+    
         public virtual FishType FishType { get; set; }
     }
 }

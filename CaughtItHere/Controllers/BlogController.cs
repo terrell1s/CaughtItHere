@@ -38,6 +38,7 @@ namespace CaughtItHere.Controllers
         // GET: Blog/Create
         public ActionResult Create()
         {
+           
             return View();
         }
 
