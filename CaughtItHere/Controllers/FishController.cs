@@ -30,7 +30,8 @@ namespace CaughtItHere.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                fishes = fishes.Where(f => f.Latitude.ToString().ToUpper().Contains(searchString.ToUpper()));
+                fishes = fishes.Where(f => f.FishTypeId.ToString().ToUpper().Contains(searchString.ToUpper()));
+               // fishes = fishes.Where(f => f.Latitude.ToString().ToUpper().Contains(searchString.ToUpper()));
 
             }
 
