@@ -5,7 +5,7 @@
 <h3>FishByType</h3>
 <div>
 
-    <input type="checkbox" name="Sample">Bowfin <br>
+    <input type="checkbox" value="1" name="checkMeOut" id="checkMeOut" checked="checked">Bowfin <br>
     <input type="checkbox" name="Sample">BullHead<br>
     <input type="checkbox" name="Sample">Carp<br>
     <input type="checkbox" name="Sample">CatFish<br>
@@ -29,7 +29,18 @@
     <form action="~/Home/Index" method="post"><input type="submit"></form>
   
 </div>
+<script>
+    $('#checkMeOut').attr('checked'); //"checked"
+    //new property method
+    $('#checkMeOut').prop('checked'); //true
 
+    if ($('#checkMeOut').prop('checked')) {
+        
+    }
+    else {
+            
+    }
+ </script>
 
 
 
