@@ -1380,7 +1380,7 @@ pre code {
 }
 .pre-scrollable {
   max-height: 340px;
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
 }
 .container {
   margin-right: auto;
@@ -6312,7 +6312,7 @@ body{
 
 #left {
 	height:100%;
-    overflow-y:scroll;
+ 
 }
 
 #map-canvas {
