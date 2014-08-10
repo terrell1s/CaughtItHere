@@ -32,11 +32,13 @@
 
     }
 
-
+    var infowindow = new google.maps.InfoWindow({
+        content:"Hello World!"
+    });
     var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
                         "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
 
-
+    var displayInformation = "<p><strong>FishType</strong></p>";
 
     function plotExisitingFish(theMap) {
         
@@ -50,12 +52,10 @@
             position: placeMarker,
             map: theMap
         });
-            </text>
+        </text>
         }
-      
-     
-
-    }
+       
+     }
 
         function create_marker(tempLocation, theMap) {
 
@@ -76,8 +76,22 @@
 
 
         }
+        
+        
+        function displayInfo(theMap)
+        {
+            
 
+            var infowindow = new google.maps.InfoWindow({
+                content: "testing"
 
+            });
+
+            infowindow.open(theMap);
+
+        
+        
+        }
 
 
         function initialize() {
@@ -90,23 +104,27 @@
             };
 
             var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-            var marker = new google.maps.Marker({ position: myCenter });
             var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
-
+            var infowindow = new google.maps.InfoWindow({});
+        
 
             plotExisitingFish(map);
-
+            
             google.maps.event.addListener(map, 'rightclick', function (event) {
                 create_marker(event.latLng, map)
                 tempLat = event.latLng.lat();
                 tempLng = event.latLng.lng();
             });
+          
 
-
-
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map,marker)
+            });
+            
+            
 
         }
-
+        
         google.maps.event.addDomListener(window, 'load', initialize)
 
 
