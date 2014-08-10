@@ -1,7 +1,8 @@
-﻿@{
+﻿@model IEnumerable<CaughtItHere.Fish>
+
+@{
     ViewBag.Title = "Home Page";
 }
-
 
 <style type="text/css">
     html {
@@ -19,16 +20,12 @@
     }
 </style>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1BssRYwTrrNmKj7nTR9Do6DanISnxpK8"></script>
-
 <script type="text/javascript">
     var tempLat;
     var tempLng;
 
 
-
     function plotNewFish(x, y) {
-        //var fishLatvar = x;
-        //var fishLngvar = y;
 
         window.location.href = "/Fish/Create/?fishLat=" + x + "&fishLng=" + y;
 
@@ -36,63 +33,82 @@
     }
 
 
-    var createNewFish = "<p><strong>Add new fish here?</strong></p>" +
-                        "<input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/>";
-
-    var createNewFish = "<p><strong>Caught a fish here?</strong></p>" + 
+    var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
                         "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
 
 
 
-
-    function create_marker(tempLocation, theMap) {
-
-
-        var marker = new google.maps.Marker({
-            position: tempLocation,
-            map: theMap,
-
+    function plotExisitingFish(theMap) {
+        
+        @foreach (var item in Model) {
+            
+            
+            <text>
+            var placeMarker = new google.maps.LatLng(@item.Latitude, @item.Longitude);
+            
+            var marker = new google.maps.Marker({
+            position: placeMarker,
+            map: theMap
         });
-
-
-        var infowindow = new google.maps.InfoWindow({
-            content: createNewFish
-
-        });
-
-        infowindow.open(theMap, marker);
-
+            </text>
+        }
+      
+     
 
     }
 
+        function create_marker(tempLocation, theMap) {
+
+
+            var marker = new google.maps.Marker({
+                position: tempLocation,
+                map: theMap,
+
+            });
+
+
+            var infowindow = new google.maps.InfoWindow({
+                content: createNewFish
+
+            });
+
+            infowindow.open(theMap, marker);
+
+
+        }
 
 
 
 
-    function initialize() {
-        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
-        var mapOptions = {
-            center: myCenter,
-            zoom: 16, mapTypeId:
-            google.maps.MapTypeId.SATELLITE
+        function initialize() {
+            var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
+            var mapOptions = {
+                center: myCenter,
+                zoom: 16, mapTypeId:
+                google.maps.MapTypeId.SATELLITE
 
-        };
+            };
 
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        var marker = new google.maps.Marker({ position: myCenter });
-        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
-
-
-        google.maps.event.addListener(map, 'rightclick', function (event) {
-            create_marker(event.latLng, map)
-            tempLat = event.latLng.lat();
-            tempLng = event.latLng.lng();
-        });
+            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            var marker = new google.maps.Marker({ position: myCenter });
+            var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
 
 
-    }
+            plotExisitingFish(map);
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+            google.maps.event.addListener(map, 'rightclick', function (event) {
+                create_marker(event.latLng, map)
+                tempLat = event.latLng.lat();
+                tempLng = event.latLng.lng();
+            });
+
+
+
+
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize)
+
 
 </script>
 
@@ -103,14 +119,14 @@
 <div class="container-fluid" id="main">
     <div class="row">
 
-            <div class="col-xs-3" id="left">
-                <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 100px;padding:50px 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Fish by Type</strong></button></form>
-                <br />
+        <div class="col-xs-3" id="left">
+            <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 100px;padding:50px 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Fish by Type</strong></button></form>
+            <br />
 
-                @*<div class="col-xs-5">*@
-                <button type="button" class="btn btn-primary btn-lg" style="margin-top: 100px;padding:50px 50px;background-color:#ffffff; color: #ff6a00; border-color: #ff6a00"><strong>Fish by Date</strong></button>
-            </div>  
-       </div>
+    @*<div class="col-xs-5">*@
+        <button type="button" class="btn btn-primary btn-lg" style="margin-top: 100px;padding:50px 50px;background-color:#ffffff; color: #ff6a00; border-color: #ff6a00"><strong>Fish by Date</strong></button>
+        </div>
+    </div>
         </div>
 
 
