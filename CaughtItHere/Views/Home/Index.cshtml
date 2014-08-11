@@ -119,7 +119,7 @@
                 var infowindow = new google.maps.InfoWindow();
                
 
-                var infocontent = "<p><strong>Type Of Fish </strong></p>" +
+                var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
                     "<p>"+plottedFish[i].fishLength+' inches'+"</p>" + 
                     "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
                       "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
