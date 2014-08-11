@@ -21,13 +21,13 @@
 </style>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1BssRYwTrrNmKj7nTR9Do6DanISnxpK8"></script>
 <script type="text/javascript">
-    var tempLat;
-    var tempLng;
+   var tempLat;
+   var tempLng;
 
-    var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
+   var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
         "Smelt", "Sturgeon", "Trout", "Walleye", "White Bass", "White Fish", "White/Longnose Sucker", "Yellow Perch"];
 
-    var plottedFish = [];
+   var plottedFish = [];
 
     function plotNewFish(x, y) {
 
@@ -105,7 +105,7 @@
             
             
 
-            plotExisitingFish(map);
+           plotExisitingFish(map);
 
         
             
@@ -113,8 +113,8 @@
             var infowindows = [];
             for (i = 0; i < plottedFish.length; i++) {  
                 marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
-                    map: map
+                position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
+                map: map
                 });
                 var infowindow = new google.maps.InfoWindow();
                
