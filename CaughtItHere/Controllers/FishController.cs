@@ -18,8 +18,12 @@ namespace CaughtItHere.Controllers
         //GET: Fish/byFishType
         public ActionResult FishByType()
         {
-            var fish = db.Fish.Include(f => f.FishType);
-            return View(fish.ToList());
+            var myFish = from f in db.Fish
+                          select f;
+
+            myFish = myFish.Where(f => f.FishTypeId == 1);
+            return View(myFish);
+                   
         }
         // GET: Fish
         public ActionResult Index(string searchString, string searchString2)
