@@ -24,6 +24,7 @@
     var tempLat;
     var tempLng;
 
+
     var plottedFish = [];
 
     function plotNewFish(x, y) {
@@ -51,16 +52,17 @@
             
             
             <text>
-            var placeMarker = new google.maps.LatLng(@item.Latitude, @item.Longitude);
-            
-            var marker = new google.maps.Marker({
+        var placeMarker = new google.maps.LatLng(@item.Latitude, @item.Longitude);
+        var marker = new google.maps.Marker({
             position: placeMarker,
             map: theMap
         });
+        plottedFish.push({id:@item.Id, fishTypeId:@item.FishTypeId, fLatitdue:@item.Latitude, fLongitude:@item.Longitude, fishLength:@item.Length, fishWeight:@item.Weight});
+       
         </text>
         }
-       
-     }
+    }  
+     
 
         function create_marker(tempLocation, theMap) {
 
@@ -109,6 +111,21 @@
             
 
             plotExisitingFish(map);
+
+            alert(plottedFish.length);
+            alert(plottedFish[0].fLatitdue);
+            alert(plottedFish[1].fLatitdue);
+            alert(plottedFish[2].fLatitdue);
+            alert(plottedFish[3].fLatitdue);
+            
+                //for(var i = 0; i < plottedFish.length; i++){
+                //    var placeMarker = new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude)
+                //    var marker = new google.maps.Marker({
+                //        position: placeMarker,
+                //        map: map
+                //    })
+                //    alert(plotNewFish[i].fLatitdue);
+                //}
             
             google.maps.event.addListener(map, 'rightclick', function (event) {
                 create_marker(event.latLng, map)
