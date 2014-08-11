@@ -18,7 +18,7 @@ namespace CaughtItHere
         public int Id { get; set; }
         [Required]
         public int FishTypeId { get; set; }
-        [Required,Range(0,120)]
+        [Required,Range(1,120)]
         public int Length { get; set; }
         public byte[] Image { get; set; }
         public string LureType { get; set; }
