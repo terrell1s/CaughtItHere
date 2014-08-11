@@ -104,25 +104,30 @@
             var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
           
             
-            var infowindow = new google.maps.InfoWindow({
-                content: infocontent
-            });
+            
             
 
             plotExisitingFish(map);
 
-            //alert(plottedFish[2].id);
-           
-            for (var i = 0; i < plottedFish.length; i++) {
-                
-                var marker = new google.maps.Marker({
+        
+            var infowindow = new google.maps.InfoWindow();
+            var marker, i;
+            for (i = 0; i < plottedFish.length; i++) {  
+                marker = new google.maps.Marker({
                     position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
                     map: map
-                    });
-                
+                });
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        infowindow.setContent(infocontent);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+              
             }
            
-            
+
             google.maps.event.addListener(map, 'rightclick', function (event) {
                 create_marker(event.latLng, map)
                 tempLat = event.latLng.lat();
@@ -130,16 +135,13 @@
             });
           
     
-            google.maps.event.addListener(marker, 'mouseover', function() {
-                infowindow.open(map,marker);
-            });
-            google.maps.event.addListener(marker, 'mouseout', function() {
-                infowindow.close(map,marker);
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-                getDetails()
-            });
-            
+            //google.maps.event.addListener(marker, 'mouseover', function() {
+            //    infowindow.open(map,marker);
+            //});
+            //google.maps.event.addListener(marker, 'mouseout', function() {
+            //    infowindow.close(map,marker);
+            //});
+           
 
         }
         
