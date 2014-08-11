@@ -123,5 +123,15 @@ namespace CaughtItHere.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult DNR()
+        {
+            return Redirect("http://www.mdnr-elicense.com/Welcome/Default.aspx");
+        }
+
+        public ActionResult Regulations()
+        {
+            return Redirect("http://www.eregulations.com/wp-content/uploads/2014/01/14MIFW-FINAL-LR.pdf");
+        }
     }
 }
