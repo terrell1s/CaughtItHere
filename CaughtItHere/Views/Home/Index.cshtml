@@ -34,17 +34,17 @@
 
     }
 
-    function getDetails() {
-
-        window.location.href = "/Fish/Index/";
+    function getDetails(x) {
+        var id = x;
+        alert(x);
+        window.location.href = "/Fish/Details/"+x;
 
 
     }
     var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
                         "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
 
-    var infocontent = "<p>Some Stuff</p>";
-    
+   
 
     function plotExisitingFish(theMap) {
         
@@ -52,11 +52,7 @@
             
             
             <text>
-        @*var placeMarker = new google.maps.LatLng(@item.Latitude, @item.Longitude);
-        var marker = new google.maps.Marker({
-            position: placeMarker,
-            map: theMap, 
-        });*@
+      
         plottedFish.push({id: @item.Id, fishTypeId:@item.FishTypeId, fLatitdue:@item.Latitude, fLongitude:@item.Longitude, fishLength:@item.Length, fishWeight:@item.Weight});
        
         </text>
@@ -110,20 +106,31 @@
             plotExisitingFish(map);
 
         
-            var infowindow = new google.maps.InfoWindow();
+            
             var marker, i;
+            var infowindows = [];
             for (i = 0; i < plottedFish.length; i++) {  
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
                     map: map
                 });
+                var infowindow = new google.maps.InfoWindow();
+               
+                var infocontent = "<p>"+plottedFish[i].fishLength+"</p>" + "<p>"+plottedFish[i].fishWeight+"</p>" +
+                      "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
+                
+                
+                infowindow.setContent(infocontent);
+                infowindows.push(infowindow);
 
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        infowindow.setContent(infocontent);
-                        infowindow.open(map, marker);
+                     
+                        infowindows[i].open(map, marker);
                     }
                 })(marker, i));
+
+                
               
             }
            
@@ -133,14 +140,6 @@
                 tempLat = event.latLng.lat();
                 tempLng = event.latLng.lng();
             });
-          
-    
-            //google.maps.event.addListener(marker, 'mouseover', function() {
-            //    infowindow.open(map,marker);
-            //});
-            //google.maps.event.addListener(marker, 'mouseout', function() {
-            //    infowindow.close(map,marker);
-            //});
            
 
         }
