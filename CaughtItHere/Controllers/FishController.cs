@@ -25,6 +25,13 @@ namespace CaughtItHere.Controllers
             return View(myFish);
                    
         }
+
+        //GET: Filter fish by date
+        public ActionResult FishByDate()
+        {
+            return View();
+
+        }
         // GET: Fish
         public ActionResult Index(string searchString, string searchString2)
         {
