@@ -24,6 +24,8 @@
     var tempLat;
     var tempLng;
 
+    var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
+        "Smelt", "Sturgeon", "Trout", "Walleye", "White Bass", "White Fish", "White/Longnose Sucker", "Yellow Perch"];
 
     var plottedFish = [];
 
@@ -116,7 +118,10 @@
                 });
                 var infowindow = new google.maps.InfoWindow();
                
-                var infocontent = "<p>"+plottedFish[i].fishLength+"</p>" + "<p>"+plottedFish[i].fishWeight+"</p>" +
+
+                var infocontent = "<p><strong>Type Of Fish </strong></p>" +
+                    "<p>"+plottedFish[i].fishLength+' inches'+"</p>" + 
+                    "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
                       "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
                 
                 
