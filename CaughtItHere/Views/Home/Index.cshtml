@@ -21,13 +21,16 @@
 </style>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1BssRYwTrrNmKj7nTR9Do6DanISnxpK8"></script>
 <script type="text/javascript">
-    var tempLat;
-    var tempLng;
+   var tempLat;
+   var tempLng;
 
-    var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
+   var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
         "Smelt", "Sturgeon", "Trout", "Walleye", "White Bass", "White Fish", "White/Longnose Sucker", "Yellow Perch"];
 
-    var plottedFish = [];
+   var plottedFish = [];
+
+   var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
+                      "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
 
     function plotNewFish(x, y) {
 
@@ -40,104 +43,80 @@
         var id = x;
         
         window.location.href = "/Fish/Details/"+x;
-
-
     }
-    var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
-                        "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
 
    
-
     function plotExisitingFish(theMap) {
-        
         @foreach (var item in Model) {
-            
-            
             <text>
-      
-        plottedFish.push({id: @item.Id, fishTypeId:@item.FishTypeId, fLatitdue:@item.Latitude, fLongitude:@item.Longitude, fishLength:@item.Length, fishWeight:@item.Weight});
+        plottedFish.push({
+            id: @item.Id, 
+            fishTypeId:@item.FishTypeId, 
+            fLatitdue:@item.Latitude, 
+            fLongitude:@item.Longitude, 
+            fishLength:@item.Length, 
+            fishWeight:@item.Weight
+                });
        
         </text>
         }
     }  
-     
+    
 
-        function create_marker(tempLocation, theMap) {
-
-
-            var marker = new google.maps.Marker({
+    function create_marker(tempLocation, theMap) {
+        var marker = new google.maps.Marker({
                 position: tempLocation,
                 map: theMap,
+        });
 
-            });
+        var infowindow = new google.maps.InfoWindow({
+            content: createNewFish
 
+        });
 
-            var infowindow = new google.maps.InfoWindow({
-                content: createNewFish
+        infowindow.open(theMap, marker);
+    }
+    
+    function initialize() {
+        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
+        var mapOptions = {
+            center: myCenter,
+            zoom: 16, mapTypeId:
+            google.maps.MapTypeId.SATELLITE
+        };
 
-            });
+        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
 
-            infowindow.open(theMap, marker);
+        plotExisitingFish(map);
 
+        var marker, i;
+        var infowindows = [];
+        for (i = 0; i < plottedFish.length; i++) {  
+            marker = new google.maps.Marker({
+            position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
+            map: map
+        });
 
-        }
-        
-        
-
-
-        function initialize() {
-            var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
-            var mapOptions = {
-                center: myCenter,
-                zoom: 16, mapTypeId:
-                google.maps.MapTypeId.SATELLITE
-
-            };
-
-       
-            
-
-            
-            var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-            var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
-          
-            
-            
-            
-
-            plotExisitingFish(map);
-
-        
-            
-            var marker, i;
-            var infowindows = [];
-            for (i = 0; i < plottedFish.length; i++) {  
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
-                    map: map
-                });
-                var infowindow = new google.maps.InfoWindow();
+        var infowindow = new google.maps.InfoWindow();
                
 
-                var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
-                    "<p>"+plottedFish[i].fishLength+' inches'+"</p>" + 
-                    "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
-                      "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
+        var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
+            "<p>"+plottedFish[i].fishLength+' inches'+"</p>" + 
+            "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
+                "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
                 
                 
-                infowindow.setContent(infocontent);
-                infowindows.push(infowindow);
+        infowindow.setContent(infocontent);
+        infowindows.push(infowindow);
 
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                return function() {
                      
-                        infowindows[i].open(map, marker);
-                    }
-                })(marker, i));
-
-                
-              
-            }
+                    infowindows[i].open(map, marker);
+                }
+            })(marker, i));
+        }
            
 
             google.maps.event.addListener(map, 'rightclick', function (event) {
@@ -148,10 +127,8 @@
            
 
         }
-        
-        google.maps.event.addDomListener(window, 'load', initialize)
 
-
+    google.maps.event.addDomListener(window, 'load', initialize)
 </script>
 
 
