@@ -10,11 +10,18 @@ namespace CaughtItHere.Controllers
     [RequireHttps]
     public class HomeController : Controller
     {
+        private CaughtItHereEntities db = new CaughtItHereEntities();
+
         public ActionResult Index()
         {
             List<FishType> theTypes = new List<FishType>();
             
-            return View();
+            
+            var exisitingFish = db.Fish;
+            
+            
+            
+            return View(exisitingFish);
         }
 
         public ActionResult About()
