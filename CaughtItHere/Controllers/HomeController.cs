@@ -37,5 +37,10 @@ namespace CaughtItHere.Controllers
 
             return View();
         }
+
+        public ActionResult DNR()
+        {
+            return Redirect("http://www.mdnr-elicense.com/Welcome/Default.aspx");
+        }
     }
 }
