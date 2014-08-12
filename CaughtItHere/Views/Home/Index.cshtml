@@ -29,9 +29,9 @@
 
     var plottedFish = [];
 
-    var Icons = ['Icons/Fish01.png', 'Icons/Fish02.png', 'Icons/Fish03.png', 'Icons/Fish04.png', 'Icons/Fish05.png', 'Icons/Fish06.png', 'Icons/Fish07.png',
-        'Icons/Fish08.png', 'Icons/Fish09.png', 'Icons/Fish10.png', 'Icons/Fish11.png', 'Icons/Fish12.png', 'Icons/Fish13.png', 'Icons/Fish14.png', 'Icons/Fish15.png',
-        'Icons/Fish16.png', 'Icons/Fish17.png', 'Icons/Fish18.png', 'Icons/Fish19.png', 'Icons/Fish20.png'];
+    var Icons = ['/Icons/Fish01.png', '/Icons/Fish02.png', '/Icons/Fish03.png', '/Icons/Fish04.png', '/Icons/Fish05.png', '/Icons/Fish06.png', '/Icons/Fish07.png',
+        '/Icons/Fish08.png', '/Icons/Fish09.png', '/Icons/Fish10.png', '/Icons/Fish11.png', '/Icons/Fish12.png', '/Icons/Fish13.png', '/Icons/Fish14.png', '/Icons/Fish15.png',
+        '/Icons/Fish16.png', '/Icons/Fish17.png', '/Icons/Fish18.png', '/Icons/Fish19.png', '/Icons/Fish20.png'];
 
     var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
                        "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
@@ -137,9 +137,9 @@
 
 
     }
-    alert("here");
+    console.log('here1');
     google.maps.event.addDomListener(window, 'load', initialize)
-    alert("after");
+    console.log('here2');
 
 </script>
 
