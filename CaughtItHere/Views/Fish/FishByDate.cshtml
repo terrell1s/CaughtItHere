@@ -4,9 +4,19 @@
     ViewBag.Title = "FishByDate";
 }
 
-<h2>Fish By Date</h2>
+<h3>Fish By Date</h3>
 <div>
-Start Date: <input type="date" name="startDate"><br />
-End Date: <input type="date" name="endDate">
+    <form method="get" action="~/Home/Index" name="fishByDateForm">
+        Start Date: <input type="date" name="startDateFilter" id="startDate"><br />
+        End Date: <input type="date" name="endDateFilter" id="endDate"><br />
+        <input type="submit" value="Submit">
+    </form>
 </div>
 
+<script>
+
+</script>
+
+@*<body onload=alert(document.getElementById(startDate))>
+    Testing
+</body>*@
