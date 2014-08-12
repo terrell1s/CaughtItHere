@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CaughtItHere;
+using CaughtItHere.Models;
 
 namespace CaughtItHere.Controllers
 {
@@ -15,14 +16,16 @@ namespace CaughtItHere.Controllers
         private CaughtItHereEntities db = new CaughtItHereEntities();
 
         // GET: FilteredFish2
-        public ActionResult Index()
+        public ActionResult Index(int[] fish, DateTime? startDateFilter, DateTime? endDateFilter)
         {
-            var exisitingFish = db.Fish;
+            var existingFish = db.Fish;
+            ViewBag.Output = fish[0];
 
-            var checkFish = from f in db.FishTypes
+            var checkFish = from f in existingFish
+                            where f.FishTypeId==6
                             select f;
 
-            return View(exisitingFish);
+            return View();
         }
 
         // GET: FilteredFish2/Details/5
