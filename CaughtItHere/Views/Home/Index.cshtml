@@ -99,6 +99,7 @@
 
         var marker, i;
         var infowindows = [];
+        
         for (i = 0; i < plottedFish.length; i++) {
             marker = new google.maps.Marker({
             position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
@@ -135,9 +136,11 @@
             });
 
 
-        }
-
+    }
+    alert("here");
     google.maps.event.addDomListener(window, 'load', initialize)
+    alert("after");
+
 </script>
 
 
