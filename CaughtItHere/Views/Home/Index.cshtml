@@ -21,17 +21,23 @@
 </style>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1BssRYwTrrNmKj7nTR9Do6DanISnxpK8"></script>
 <script type="text/javascript">
-   var tempLat;
-   var tempLng;
+    var tempLat;
+    var tempLng;
 
-   var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
-        "Smelt", "Sturgeon", "Trout", "Walleye", "White Bass", "White Fish", "White/Longnose Sucker", "Yellow Perch"];
+    var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
+         "Smelt", "Sturgeon", "Trout", "Walleye", "White Bass", "White Fish", "White/Longnose Sucker", "Yellow Perch"];
 
-   var plottedFish = [];
+    var plottedFish = [];
 
-   var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
-                      "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
+    var Icons = ['Icons/Fish01.png', 'Icons/Fish02.png', 'Icons/Fish03.png', 'Icons/Fish04.png', 'Icons/Fish05.png', 'Icons/Fish06.png', 'Icons/Fish07.png',
+        'Icons/Fish08.png', 'Icons/Fish09.png', 'Icons/Fish10.png', 'Icons/Fish11.png', 'Icons/Fish12.png', 'Icons/Fish13.png', 'Icons/Fish14.png', 'Icons/Fish15.png',
+        'Icons/Fish16.png', 'Icons/Fish17.png', 'Icons/Fish18.png', 'Icons/Fish19.png', 'Icons/Fish20.png'];
 
+    var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
+                       "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
+
+   
+    
     function plotNewFish(x, y) {
 
         window.location.href = "/Fish/Create/?fishLat=" + x + "&fishLng=" + y;
@@ -41,27 +47,27 @@
 
     function getDetails(x) {
         var id = x;
-        
+
         window.location.href = "/Fish/Details/"+x;
     }
 
-   
+
     function plotExisitingFish(theMap) {
         @foreach (var item in Model) {
             <text>
         plottedFish.push({
-            id: @item.Id, 
-            fishTypeId:@item.FishTypeId, 
-            fLatitdue:@item.Latitude, 
-            fLongitude:@item.Longitude, 
-            fishLength:@item.Length, 
+            id: @item.Id,
+            fishTypeId:@item.FishTypeId,
+            fLatitdue:@item.Latitude,
+            fLongitude:@item.Longitude,
+            fishLength:@item.Length,
             fishWeight:@item.Weight
-                });
-       
+            });
+
         </text>
         }
-    }  
-    
+    }
+
 
     function create_marker(tempLocation, theMap) {
         var marker = new google.maps.Marker({
@@ -76,7 +82,7 @@
 
         infowindow.open(theMap, marker);
     }
-    
+
     function initialize() {
         var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
         var mapOptions = {
@@ -89,42 +95,45 @@
         var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
 
         plotExisitingFish(map);
+        
 
         var marker, i;
         var infowindows = [];
-        for (i = 0; i < plottedFish.length; i++) {  
+        for (i = 0; i < plottedFish.length; i++) {
             marker = new google.maps.Marker({
             position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
-            map: map
+            map: map,
+            icon: Icons[plottedFish[i].fishTypeId-1]
+
         });
 
         var infowindow = new google.maps.InfoWindow();
-               
+
 
         var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
-            "<p>"+plottedFish[i].fishLength+' inches'+"</p>" + 
+            "<p>"+plottedFish[i].fishLength+' inches'+"</p>" +
             "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
                 "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
-                
-                
+
+
         infowindow.setContent(infocontent);
         infowindows.push(infowindow);
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
                 return function() {
-                     
+
                     infowindows[i].open(map, marker);
                 }
             })(marker, i));
         }
-           
+
 
             google.maps.event.addListener(map, 'rightclick', function (event) {
                 create_marker(event.latLng, map)
                 tempLat = event.latLng.lat();
                 tempLng = event.latLng.lng();
             });
-           
+
 
         }
 
