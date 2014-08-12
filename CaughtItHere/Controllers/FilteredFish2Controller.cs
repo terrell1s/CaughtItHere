@@ -22,10 +22,10 @@ namespace CaughtItHere.Controllers
             ViewBag.Output = fish[0];
 
             var checkFish = from f in existingFish
-                            where f.FishTypeId==6
+                            where fish.Contains(f.FishTypeId)
                             select f;
 
-            return View();
+            return View(checkFish);
         }
 
         // GET: FilteredFish2/Details/5
