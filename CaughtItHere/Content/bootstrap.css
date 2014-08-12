@@ -957,7 +957,7 @@ hr {
   margin-top: 22px;
   margin-bottom: 22px;
   border: 0;
-  border-top: 1px solid #eeeeee;
+  border-top: 0 solid #eeeeee;
 }
 .sr-only {
   position: absolute;
@@ -6323,4 +6323,11 @@ body{
     top:60px;
     bottom:0;
     
+}
+html { 
+  background: url(documents/fish.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
