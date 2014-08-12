@@ -180,6 +180,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\FilteredFish2Controller.cs" />
     <Compile Include="Controllers\FishController.cs" />
     <Compile Include="Controllers\FishTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -289,7 +290,12 @@
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Fish\FishByType.cshtml" />
-    <Content Include="Views\Fish\FishByDate.cshtml" />
+    <Content Include="Views\FilteredFish.cshtml" />
+    <Content Include="Views\FilteredFish2\Create.cshtml" />
+    <Content Include="Views\FilteredFish2\Delete.cshtml" />
+    <Content Include="Views\FilteredFish2\Details.cshtml" />
+    <Content Include="Views\FilteredFish2\Edit.cshtml" />
+    <Content Include="Views\FilteredFish2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
