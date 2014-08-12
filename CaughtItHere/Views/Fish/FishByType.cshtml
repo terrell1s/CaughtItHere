@@ -28,6 +28,8 @@
         <input type="checkbox" name="fish" value="19">White Fish<br>
         <input type="checkbox" name="fish" value="20">White/Longnos<br>
         <input type="checkbox" name="fish" value="21">Yellow Perch<br>
+            Start Date: <input type="date" name="startDateFilter" id="startDate"><br />
+            End Date: <input type="date" name="endDateFilter" id="endDate"><br />
         <br />
         <input type="submit" value="submit">
     </form>
@@ -43,6 +45,14 @@
     </script>
 </div>
 
+<h3>Fish By Date</h3>
+<div>
+    <form method="get" action="~/Home/Index" name="fishByDateForm">
+        Start Date: <input type="date" name="startDateFilter" id="startDate"><br />
+        End Date: <input type="date" name="endDateFilter" id="endDate"><br />
+        <input type="submit" value="Submit">
+    </form>
+</div>
 
 
 

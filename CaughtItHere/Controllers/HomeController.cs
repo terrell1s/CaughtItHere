@@ -11,8 +11,7 @@ namespace CaughtItHere.Controllers
     public class HomeController : Controller
     {
         private CaughtItHereEntities db = new CaughtItHereEntities();
-
-        public ActionResult Index( string searchString)
+        public ActionResult Index(string searchString, DateTime? startDate, DateTime? endDate)
         {
             List<FishType> theTypes = new List<FishType>();
             
