@@ -1,47 +1,39 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "FishByType";
 }
 
 <h3>FishByType</h3>
+
+
 <div>
-    <input type="checkbox" value=" checkAll" name="checkMeOut" id="1">Select All <br>
-    <input type="checkbox" value="1" name="checkMeOut" id="2">Bowfin <br>
-    <input type="checkbox" name="Sample" id=" 3">BullHead<br>
-    <input type="checkbox" name="Sample">Carp<br>
-    <input type="checkbox" name="Sample">CatFish<br>
-    <input type="checkbox" name="Sample">Herring<br>
-    <input type="checkbox" name="Sample">Largemouth<br>
-    <input type="checkbox" name="Sample">Muskellunge<br>
-    <input type="checkbox" name="Sample">Pan Fish <br>
-    <input type="checkbox" name="Sample">Pike<br>
-    <input type="checkbox" name="Sample">Rock Bass<br>
-    <input type="checkbox" name="Sample">Salmon<br>
-    <input type="checkbox" name="Sample">Smallmouth Bass<br>
-    <input type="checkbox" name="Sample">Smelt<br>'
-    <input type="checkbox" name="Sample">Sturgeon<br>
-    <input type="checkbox" name="Sample">Trout<br>
-    <input type="checkbox" name="Sample">Walleye<br>
-    <input type="checkbox" name="Sample">White Bass<br>
-    <input type="checkbox" name="Sample">White Fish<br>
-    <input type="checkbox" name="Sample">White/Longnos<br>
-    <input type="checkbox" name="Sample">Yellow Perch<br>
-    <br />
-    <form action="~/Home/Index" method="post"><input type="submit"></form>
+        <form name="input" action="~/Home/Index" method="get">
+        <input type="checkbox" name="fish" value="1">Select All <br>
+        <input type="checkbox" name="fish" value="2"> Bowfin <br>
+        <input type="checkbox" name="fish" value="3">BullHead<br>
+        <input type="checkbox" name="fish" value="4">Carp<br>
+        <input type="checkbox" name="fish" value="5">CatFish<br>
+        <input type="checkbox" name="fish" value="6">Herring<br>
+        <input type="checkbox" name="fish" value="7">Largemouth<br>
+        <input type="checkbox" name="fish" value="8">Muskellunge<br>
+        <input type="checkbox" name="fish" value="9">Pan Fish <br>
+        <input type="checkbox" name="fish" value="10">Pike<br>
+        <input type="checkbox" name="fish" value="11">Rock Bass<br>
+        <input type="checkbox" name="fish" value="12">Salmon<br>
+        <input type="checkbox" name="fish" value="13">Smallmouth Bass<br>
+        <input type="checkbox" name="fish" value="14">Smelt<br>
+        <input type="checkbox" name="fish" value="15">Sturgeon<br>
+        <input type="checkbox" name="fish" value="16">Trout<br>
+        <input type="checkbox" name="fish" value="17">Walleye<br>
+        <input type="checkbox" name="fish" value="18">White Bass<br>
+        <input type="checkbox" name="fish" value="19">White Fish<br>
+        <input type="checkbox" name="fish" value="20">White/Longnos<br>
+        <input type="checkbox" name="fish" value="21">Yellow Perch<br>
+        <br />
+        <input type="submit" value="submit">
+    </form>
   
 </div>
-<script>
-    $('#checkMeOut').attr('checked'); //"checked"
-    //new property method
-    $('#checkMeOut').prop('checked'); //true
 
-    if ($('#checkMeOut').prop('checked')) {
-        
-    }
-    else {
-            
-    }
- </script>
 
 
 

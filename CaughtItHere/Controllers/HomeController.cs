@@ -12,14 +12,20 @@ namespace CaughtItHere.Controllers
     {
         private CaughtItHereEntities db = new CaughtItHereEntities();
 
-        public ActionResult Index()
+        public ActionResult Index( string searchString)
         {
             List<FishType> theTypes = new List<FishType>();
             
             
             var exisitingFish = db.Fish;
-            
-            
+
+            var checkFish = from f in db.FishTypes
+                            select f;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                checkFish = checkFish.Where(s => s.Name.Contains(searchString));
+
+            }
             
             return View(exisitingFish);
         }
