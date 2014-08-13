@@ -180,6 +180,7 @@
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\FilteredFish2Controller.cs" />
     <Compile Include="Controllers\FishController.cs" />
     <Compile Include="Controllers\FishTypesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -207,7 +208,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -289,16 +290,21 @@
     <Content Include="Views\Blog\Edit.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Fish\FishByType.cshtml" />
-    <Content Include="Views\Fish\FishByDate.cshtml" />
+    <Content Include="Views\FilteredFish.cshtml" />
+    <Content Include="Views\FilteredFish2\Create.cshtml" />
+    <Content Include="Views\FilteredFish2\Delete.cshtml" />
+    <Content Include="Views\FilteredFish2\Details.cshtml" />
+    <Content Include="Views\FilteredFish2\Edit.cshtml" />
+    <Content Include="Views\FilteredFish2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Icons\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Controllers\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>

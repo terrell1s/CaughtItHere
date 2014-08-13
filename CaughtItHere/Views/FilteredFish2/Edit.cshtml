@@ -1,30 +1,23 @@
 ﻿@model CaughtItHere.Fish
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Add New Fish to Map</h2>
+<h2>Edit</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        
-       
-        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+        <h4>Fish</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FishTypeId, "What kind of fish?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.FishTypeId, "FishTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("FishTypeId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FishTypeId, "", new { @class = "text-danger" })
@@ -32,15 +25,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TimeDate,"When did you catch it?", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TimeDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TimeDate, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Length, "How long was it?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Length, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Length, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
@@ -48,15 +33,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Weight, "How much did it weigh?", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Image, "Do you have a picture?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
@@ -64,7 +41,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LureType,"What type of lure did you use?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.LureType, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.LureType, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.LureType, "", new { @class = "text-danger" })
@@ -72,54 +49,61 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ImageLure,"Do you have a picture of the lure?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ImageLure, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <form name="myWebForm" action="mailto:youremail@email.com" method="post">
-                    <input type="file" name="uploadField" />
-                </form>
                 @Html.EditorFor(model => model.ImageLure, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ImageLure, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comment,"Anything else?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
             </div>
         </div>
 
-            @Html.HiddenFor(model => Model.Latitude)
-          @*<div class="form-group">
+        <div class="form-group">
+            @Html.LabelFor(model => model.TimeDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TimeDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TimeDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
-                
             </div>
-        </div>*@
-        
-        @Html.HiddenFor(model => model.Longitude)
-        @*<div class="form-group">
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
             </div>
-        </div>*@
-        
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Weight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Weight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
