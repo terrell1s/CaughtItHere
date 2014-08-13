@@ -20,12 +20,30 @@ namespace CaughtItHere.Controllers
         {
             var existingFish = db.Fish;
             ViewBag.Output = startDateFilter;
-
             var checkFish = from f in existingFish
+                            select f;
+
+            if (fish[0] > 0 && startDateFilter != null && endDateFilter != null)
+            {
+                checkFish = from f in existingFish
+                               where fish.Contains(f.FishTypeId) &&
+                                     f.TimeDate >= startDateFilter &&
+                                     f.TimeDate <= endDateFilter
+                               select f;
+            }
+            else if (fish[0] > 0 && endDateFilter != null)
+            {
+                checkFish = from f in existingFish
                             where fish.Contains(f.FishTypeId) &&
-                                  f.TimeDate >= startDateFilter &&
                                   f.TimeDate <= endDateFilter
                             select f;
+            }
+            else if (fish[0] > 0)
+            {
+                checkFish = from f in existingFish
+                            where fish.Contains(f.FishTypeId)
+                            select f;
+            }
 
             return View(checkFish);
         }
