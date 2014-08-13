@@ -2,13 +2,13 @@
     ViewBag.Title = "FishByType";
 }
 
-<h3>FishByType</h3>
+<h3>Filter your fish by the type of fish and date caught!</h3>
 
 
 <div>
         <form name="input" action="~/FilteredFish2/Index" method="get">
-        <input type="checkbox" name="fish" value="0">Select All <br>
-        <input type="checkbox" name="fish" value="1"> Bowfin <br>
+        <input type="checkbox" name="fish" value="0"><Strong>Select All</Strong><br>
+        <input type="checkbox" name="fish" value="1">Bowfin <br>
         <input type="checkbox" name="fish" value="2">BullHead<br>
         <input type="checkbox" name="fish" value="3">Carp<br>
         <input type="checkbox" name="fish" value="4">CatFish<br>
@@ -28,8 +28,8 @@
         <input type="checkbox" name="fish" value="18">White Fish<br>
         <input type="checkbox" name="fish" value="19">White/Longnos<br>
         <input type="checkbox" name="fish" value="20">Yellow Perch<br>
-            Start Date: <input type="date" name="startDateFilter" id="startDate"><br />
-            End Date: <input type="date" name="endDateFilter" id="endDate"><br />
+            Fish Caught After: &nbsp  <input type="date" name="startDateFilter" id="startDate"><br />
+            Fish Caught Before: <input type="date" name="endDateFilter" id="endDate"><br />
         <br />
         <input type="submit" value="submit">
     </form>
