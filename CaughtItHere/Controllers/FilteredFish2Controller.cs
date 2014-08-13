@@ -19,7 +19,6 @@ namespace CaughtItHere.Controllers
         public ActionResult Index(int[] fish, DateTime? startDateFilter, DateTime? endDateFilter)
         {
             var existingFish = db.Fish;
-            ViewBag.Output = fish[0];
  
             var checkFish = from f in existingFish
                             select f;
