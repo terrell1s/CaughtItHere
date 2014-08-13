@@ -19,10 +19,12 @@ namespace CaughtItHere.Controllers
         public ActionResult Index(int[] fish, DateTime? startDateFilter, DateTime? endDateFilter)
         {
             var existingFish = db.Fish;
-            ViewBag.Output = fish[0];
+            ViewBag.Output = startDateFilter;
 
             var checkFish = from f in existingFish
-                            where fish.Contains(f.FishTypeId)
+                            where fish.Contains(f.FishTypeId) &&
+                                  f.TimeDate >= startDateFilter &&
+                                  f.TimeDate <= endDateFilter
                             select f;
 
             return View(checkFish);
