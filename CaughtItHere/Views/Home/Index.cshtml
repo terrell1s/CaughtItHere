@@ -36,13 +36,9 @@
     var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
                        "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
 
-   
-    
     function plotNewFish(x, y) {
 
         window.location.href = "/Fish/Create/?fishLat=" + x + "&fishLng=" + y;
-
-
     }
 
     function getDetails(x) {
@@ -67,12 +63,24 @@
         </text>
         }
     }
-
-
+    function codeAddress(map) {
+        var add = document.getElementById('address').value;
+        mapcode.geocode({ 'address': add }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter (results[0].geometry.location);
+                var hint = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('This code is not successful ' + status);
+            }
+        });
+    }
     function create_marker(tempLocation, theMap) {
         var marker = new google.maps.Marker({
-                position: tempLocation,
-                map: theMap,
+            position: tempLocation,
+            map: theMap,
         });
 
         var infowindow = new google.maps.InfoWindow({
@@ -83,50 +91,52 @@
         infowindow.open(theMap, marker);
     }
 
+    var mapcode;
+    var map;
+    
     function initialize() {
-        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
+        mapcode = new google.maps.Geocoder();
+        var lnt = new google.maps.LatLng(42.6818153, -83.3661168);
         var mapOptions = {
-            center: myCenter,
-            zoom: 16, mapTypeId:
-            google.maps.MapTypeId.SATELLITE
-        };
+            center: lnt,
+            zoom: 16, 
+            mapTypeId: google.maps.MapTypeId.SATELLITE
+            };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+             
+            plotExisitingFish(map);
 
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-        var myCenter = new google.maps.LatLng(42.6818153, -83.3661168);
+            var marker, i;
+            var infowindows = [];
 
-        plotExisitingFish(map);
-        
+            for (i = 0; i < plottedFish.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
+                    map: map,
+                    icon: Icons[plottedFish[i].fishTypeId-1]
 
-        var marker, i;
-        var infowindows = [];
-        
-        for (i = 0; i < plottedFish.length; i++) {
-            marker = new google.maps.Marker({
-            position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
-            map: map,
-            icon: Icons[plottedFish[i].fishTypeId-1]
+                });
 
-        });
-
-        var infowindow = new google.maps.InfoWindow();
+                var infowindow = new google.maps.InfoWindow();
 
 
-        var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
-            "<p>"+plottedFish[i].fishLength+' inches'+"</p>" +
-            "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
-                "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
+                var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
+                    "<p>"+plottedFish[i].fishLength+' inches'+"</p>" +
+                    "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
+                        "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
 
 
-        infowindow.setContent(infocontent);
-        infowindows.push(infowindow);
+                infowindow.setContent(infocontent);
+                infowindows.push(infowindow);
+            
 
-        google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                return function() {
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
 
-                    infowindows[i].open(map, marker);
-                }
-            })(marker, i));
-        }
+                        infowindows[i].open(map, marker);
+                    }
+                })(marker, i));
+            }
 
 
             google.maps.event.addListener(map, 'rightclick', function (event) {
@@ -134,12 +144,10 @@
                 tempLat = event.latLng.lat();
                 tempLng = event.latLng.lng();
             });
-
-
     }
-    console.log('here1');
+   
     google.maps.event.addDomListener(window, 'load', initialize)
-    console.log('here2');
+  
 
 </script>
 
@@ -149,57 +157,19 @@
 </div>
 <div style="background-image:url('fish.jpg')" class="container-fluid" id="main">
     <div class="row">
-
+        
         <div class="col-xs-3" id="left">
             <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 100px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Filter Fish</strong></button></form>
-            <br />
-       </div>
-    </div>
+            <div id="panel">
+            <input id="address" type="text" value="">
+            <input type="button" value="Search" onclick="codeAddress(map)">
         </div>
-
-
-
-@*<!DOCTYPE LINK HREF="https://maps/documentation/javascript/examples/default.css" REL="stylesheet">
-<html>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false" type="text/javascript"></script>
-<script>
-    var mapcode;
-    var diag;
-    function initialize() {
-        mapcode = new google.maps.Geocoder();
-        var lnt = new google.maps.LatLng(26.45, 82.85);
-        var diagChoice = {
-            zoom: 12,
-            center: lnt,
-            diagId: google.maps.MapTypeId.ROADMAP
-        }
-        diag = new google.maps.Map(document.getElementById('map-canvas'), diagChoice);
-
-    }
-    function codeAddress() {
-        var add = document.getElementById('address').value;
-        mapcode.geocode({ 'address': add }, function (results, status) {
-            if (status == google.maps.GeocoderStatus.OK) {
-                diag.setCenter(results[0].geometry.location);
-                var hint = new google.maps.Marker({
-                    diag: diag,
-                    position: results[0].geometry.location
-                });
-            } else {
-                alert('This code is not successful ' + status);
-            }
-        });
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-</script>
-<body>
-    <div id="panel">
-        <input id="address" type="textbox" value="">
-        <input type="button" value="Search" onclick="codeAddress()">
+            <br />
+        </div>
     </div>
-    <div id="map-canvas" style="width: 900px; height: 900px; border: 5px solid #5E5454;">
-    </div>
-</body>
-</html>*@
+</div>
+
+
+
+
+   
