@@ -22,7 +22,9 @@ namespace CaughtItHere.Controllers
             ViewBag.Output = fish[0];
 
             var checkFish = from f in existingFish
-                            where fish.Contains(f.FishTypeId)
+                            where fish.Contains(f.FishTypeId) &&
+                                  f.TimeDate >= startDateFilter &&
+                                  f.TimeDate <= endDateFilter
                             select f;
 
             return View(checkFish);
