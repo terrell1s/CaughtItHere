@@ -18,11 +18,9 @@ namespace CaughtItHere.Controllers
         //GET: Fish/byFishType
         public ActionResult FishByType()
         {
-            var myFish = from f in db.Fish
-                          select f;
-
-            myFish = myFish.Where(f => f.FishTypeId == 1);
-            return View(myFish);
+           
+         
+            return View();
                    
         }
 
