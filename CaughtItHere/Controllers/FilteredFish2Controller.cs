@@ -19,11 +19,15 @@ namespace CaughtItHere.Controllers
         public ActionResult Index(int[] fish, DateTime? startDateFilter, DateTime? endDateFilter)
         {
             var existingFish = db.Fish;
- 
             var checkFish = from f in existingFish
                             select f;
 
-            if (fish[0] != 0)
+            if (fish == null)
+            {
+                
+            }
+
+            else if (fish[0] != 0)
             {
                 checkFish = from f in existingFish
                             where fish.Contains(f.FishTypeId)
