@@ -4,7 +4,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<style type="text/css">
+@*<style type="text/css">
     html {
         height: 50%;
     }
@@ -163,28 +163,29 @@
     google.maps.event.addDomListener(window, 'load', initialize)
   
 
-</script>
+</script>*@
 
 
-<div id="map-canvas" style="width:82%; height:89%;">
+<div id="map-canvas" style="width:82%; height:89%;"></div>
+                     
+                      <div style="background-image:url('fish.jpg')" class="container-fluid" id="main">
+                          <div class="row">
 
-</div>
- <img src="~/Images/Jumping_Fish.png" alt=" Jumping_Fish" style="float:left" width="100" height="400"/>
-<div style="background-image:url('fish.jpg')" class="container-fluid" id="main">
-    <div class="row">
-        
-        <div class="col-xs-3" id="left">
-            <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 100px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Filter Fish</strong></button></form>
-            <div id="panel">
-            <input id="address" type="text" value="">
-            <input type="button" value="Search" onclick="codeAddress(map)">
-        </div>
-            <br />
-        </div>
-    </div>
-</div>
+                              <div style="float:left" class="col-xs-3" id="left">
+                                  <div id="leftside" style="width:18%">
+                                      <img src="http://oi58.tinypic.com/eg7g5g.jpg" />
+                                      <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 100px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Filter Fish</strong></button></form>
+                                      <br />
+                                      <div id="panel">
+                                          <input id="address" type="text" value="">
+                                          <input type="button" value="Search" onclick="codeAddress(map)">
+                                      </div>
+                                      <br />
+                                  </div>
+                              </div>
+                          </div>
+                          </div>
 
 
 
 
-   
