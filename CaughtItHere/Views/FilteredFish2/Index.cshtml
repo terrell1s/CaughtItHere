@@ -1,84 +1,189 @@
 ﻿@model IEnumerable<CaughtItHere.Fish>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Home Page";
 }
 
-<h2>Index</h2>
+<style type="text/css">
+    html {
+        height: 50%;
+    }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Length)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LureType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageLure)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TimeDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Weight)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FishType.Name)
-        </th>
-        <th></th>
-    </tr>
+    body {
+        height: 50%;
+        margin: auto;
+        padding: 0;
+    }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Length)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LureType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageLure)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TimeDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Latitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Longitude)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Weight)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FishType.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    #map-canvas {
+        height: 100%;
+    }
+</style>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD1BssRYwTrrNmKj7nTR9Do6DanISnxpK8"></script>
+<script type="text/javascript">
+    //Delcare global variables
+    var tempLat;
+    var tempLng;
+    var mapcode;
+    var map;
 
-</table>
+    //Create a array to hold fish types from model
+    var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
+         "Smelt", "Sturgeon", "Trout", "Walleye", "White Bass", "White Fish", "White/Longnose Sucker", "Yellow Perch"];
+
+    //Aarry of fish that exisit in the database
+    var plottedFish = [];
+
+    //Aarry to hold all the icon pictures
+    var Icons = ['/Icons/Fish01.png', '/Icons/Fish02.png', '/Icons/Fish03.png', '/Icons/Fish04.png', '/Icons/Fish05.png', '/Icons/Fish06.png', '/Icons/Fish07.png',
+        '/Icons/Fish08.png', '/Icons/Fish09.png', '/Icons/Fish10.png', '/Icons/Fish11.png', '/Icons/Fish12.png', '/Icons/Fish13.png', '/Icons/Fish14.png', '/Icons/Fish15.png',
+        '/Icons/Fish16.png', '/Icons/Fish17.png', '/Icons/Fish18.png', '/Icons/Fish19.png', '/Icons/Fish20.png'];
+
+    //Infowindow to create new fish
+    var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
+                       "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
+
+    //Drop a pin and redirect to the create page
+    function plotNewFish(x, y) {
+
+        window.location.href = "/Fish/Create/?fishLat=" + x + "&fishLng=" + y;
+    }
+
+    //Redirect the user to all details of the fish when clicked
+    function getDetails(x) {
+        var id = x;
+
+        window.location.href = "/Fish/Details/"+x;
+    }
+
+    //Push the database of all exisiting fish and create arrays for use in google maps
+    function plotExisitingFish(theMap) {
+        @foreach (var item in Model) {
+            <text>
+        plottedFish.push({
+            id: @item.Id,
+            fishTypeId:@item.FishTypeId,
+            fLatitdue:@item.Latitude,
+            fLongitude:@item.Longitude,
+            fishLength:@item.Length,
+            fishWeight:@item.Weight
+            });
+
+        </text>
+        }
+    }
+
+    //Function to access googles maps search bar
+    function codeAddress(map) {
+        var add = document.getElementById('address').value;
+        mapcode.geocode({ 'address': add }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter (results[0].geometry.location);
+                var hint = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            } else {
+                alert('This code is not successful ' + status);
+            }
+        });
+    }
+
+    //Create a new marker and record the loction
+    function create_marker(tempLocation, theMap) {
+        var marker = new google.maps.Marker({
+            position: tempLocation,
+            map: theMap,
+        });
+
+        var infowindow = new google.maps.InfoWindow({
+            content: createNewFish
+
+        });
+
+        infowindow.open(theMap, marker);
+    }
+
+
+    //Draw the map
+    function initialize() {
+        mapcode = new google.maps.Geocoder();
+        var lnt = new google.maps.LatLng(42.6818153, -83.3661168);
+        var mapOptions = {
+            center: lnt,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.SATELLITE
+            };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+            //Call to plot all fish
+            plotExisitingFish(map);
+
+            var marker, i;
+            var infowindows = [];
+
+            for (i = 0; i < plottedFish.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
+                    map: map,
+                    icon: Icons[plottedFish[i].fishTypeId-1]
+
+                });
+
+                var infowindow = new google.maps.InfoWindow();
+
+                //Infowindow of quick information of fish at that location
+                var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
+                    "<p>"+plottedFish[i].fishLength+' inches'+"</p>" +
+                    "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
+                        "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
+
+                //Display the infowindow
+                infowindow.setContent(infocontent);
+                infowindows.push(infowindow);
+
+                //Monitor the map for clicks on markers and redirect
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+
+                        infowindows[i].open(map, marker);
+                    }
+                })(marker, i));
+            }
+
+            //Monitor the map for right click to create a new fish
+            google.maps.event.addListener(map, 'rightclick', function (event) {
+                create_marker(event.latLng, map)
+                tempLat = event.latLng.lat();
+                tempLng = event.latLng.lng();
+            });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize)
+
+
+</script>
+
+
+<div id="map-canvas" style="width:82%; height:89%;">
+
+</div>
+<img src="~/Images/Jumping_Fish.png" alt=" Jumping_Fish" style="float:left" width="100" height="400" />
+<div style="background-image:url('fish.jpg')" class="container-fluid" id="main">
+    <div class="row">
+
+        <div class="col-xs-3" id="left">
+            <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 100px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Filter Fish</strong></button></form>
+            <div id="panel">
+                <input id="address" type="text" value="">
+                <input type="button" value="Search" onclick="codeAddress(map)">
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+
+
+
+
+
