@@ -15,23 +15,25 @@ namespace CaughtItHere
     
     public partial class Fish
     {
+
         public int Id { get; set; }
         [Required]
         public int FishTypeId { get; set; }
-        [Required,Range(1,120)]
+        [Required, Range(1, 120)]
         public int Length { get; set; }
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
         public string LureType { get; set; }
-        public byte[] ImageLure { get; set; }
+        public string ImageLure { get; set; }
         public string Comment { get; set; }
-        [Required,DataType(DataType.Date)]
+        [Required, DataType(DataType.Date)]
         public System.DateTime TimeDate { get; set; }
-        [Required,Range(-90,90)]
+        [Required, Range(-90, 90)]
         public double Latitude { get; set; }
-        [Range(-180, 180), Required]
+        [Required, Range(-180, 180)]
         public double Longitude { get; set; }
         [Required, Range(0,1000)]
-        public Nullable<int> Weight { get; set; }
+        public int Weight { get; set; }
+    
         public virtual FishType FishType { get; set; }
     }
 }

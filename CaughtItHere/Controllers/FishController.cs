@@ -92,11 +92,26 @@ namespace CaughtItHere.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FishTypeId,Length,Weight,Image,LureType,ImageLure,Comment,TimeDate,Latitude,Longitude")] Fish fish)
         {
             if (ModelState.IsValid)
             {
+
+                HttpPostedFileBase Fishphoto = Request.Files["Fishphoto"];
+                HttpPostedFileBase Lurephoto = Request.Files["Lurephoto"];
+                string Fishpath = Fishphoto.FileName;
+                string Lurepath = Lurephoto.FileName;
+                if (Fishphoto != null)
+                {
+                    Fishphoto.SaveAs(Server.MapPath("~/Images/") + Fishpath);
+                }
+                fish.Image = Fishpath;
+                if (Lurephoto != null)
+                {
+                    Lurephoto.SaveAs(Server.MapPath("~/Images/") + Lurepath);
+                }
+                fish.ImageLure = Lurepath;
                 db.Fish.Add(fish);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Home");

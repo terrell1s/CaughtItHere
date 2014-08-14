@@ -32,14 +32,10 @@
             @Html.DisplayFor(model => model.Weight)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
+        <div>
+            <img width="300" height="150" src="@Url.Content(String.Format("~/Images/{0}", Model.Image))" alt="image" />
+        </div>
+        
         <dt>
             @Html.DisplayNameFor(model => model.LureType)
         </dt>
@@ -48,14 +44,9 @@
             @Html.DisplayFor(model => model.LureType)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageLure)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageLure)
-        </dd>
-
+        <div>
+            <img width="250" height="100" src="@Url.Content(String.Format("~/Images/{0}", Model.ImageLure))" alt="image" />
+        </div>
         <dt>
             @Html.DisplayNameFor(model => model.Comment)
         </dt>
@@ -71,27 +62,7 @@
         <dd>
             @Html.DisplayFor(model => model.TimeDate)
         </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>*@
-
       
     </dl>
 </div>
-<p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")*@
-</p>
+
