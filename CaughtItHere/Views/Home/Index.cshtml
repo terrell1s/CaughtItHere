@@ -4,7 +4,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@*<style type="text/css">
+<style type="text/css">
     html {
         height: 50%;
     }
@@ -123,6 +123,14 @@
             var marker, i;
             var infowindows = [];
 
+            //Center on user's location if they allow you to check their GPS coordinates
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    map.setCenter(initialLocation);
+                });
+            }
+
             for (i = 0; i < plottedFish.length; i++) {
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
@@ -161,9 +169,7 @@
     }
    
     google.maps.event.addDomListener(window, 'load', initialize)
-  
-
-</script>*@
+</script>
 
 
 <div id="map-canvas" style="width:82%; height:89%;"></div>
