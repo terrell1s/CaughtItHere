@@ -4,9 +4,6 @@
     ViewBag.Title = "Details";
 }
 
-<<<<<<< HEAD
-
-
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -14,17 +11,16 @@
                 <h1>@Html.DisplayNameFor(model => model.FishType.Name)</h1>
             </dt>*@
     <div style="float:left">
-=======
+
 @*<h2>Details</h2>*@
 
 <div>
     @*<h4>Fish</h4>*@
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.FishType.Name)
-        </dt>
->>>>>>> origin/master
+        </dt>*@
         <dd>
             <h1>@Html.DisplayFor(model => model.FishType.Name)</h1>
         </dd>
@@ -42,21 +38,12 @@
         <dd>
            <h4>@Html.DisplayFor(model => model.Weight)<p>lbs.</p></h4>
         </dd>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
         <dt>
             <h4>Date Caught:</h4>
         </dt>
         <dd>
            <h4>@Html.DisplayFor(model => model.TimeDate)</h4>
         </dd>
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> origin/master
         <dt>
             <h4>@Html.DisplayNameFor(model => model.LureType):</h4>
         </dt>
@@ -76,18 +63,11 @@
         <br />
             <img width="250" height="100"  style="float:right; border:double;box-shadow: 10px 10px 5px #808080; margin-top:40px;" src="@Url.Content(String.Format("~/Images/{0}", Model.ImageLure))" alt="image" />
         </div>
-      
+      </div>
 
       
 
     </dl>
 
-    <div>
-        <img width="300" height="200" src="@Url.Content(String.Format("~/Images/{0}", Model.Image))" alt="Fish image" />
-    </div>
 
-    <div>
-        <img width="300" height="200" src="@Url.Content(String.Format("~/Images/{0}", Model.ImageLure))" alt="Lure image" />
-    </div>
-</div>
 
