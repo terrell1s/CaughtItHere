@@ -27,6 +27,8 @@
     var mapcode;
     var map;
 
+    //Icon for create fish
+    var createIcon = '/Icons/CreateIcon.png';
     //Create a array to hold fish types from model
     var fishTypes =  ["Bowfin", "Bullhead", "Carp", "Catfish", "Herring", "Largemouth Bass", "Muskellunge", "Pan Fish", "Pike", "Rock Bass", "Salmon", "Smallmouth Bass",
          "Smelt", "Sturgeon", "Trout", "Walleye", "White Bass", "White Fish", "White/Longnose Sucker", "Yellow Perch"];
@@ -77,6 +79,14 @@
         </text>
         }
     }
+    //function toggleBounce() {
+
+    //    if (marker.getAnimation() != null) {
+    //        marker.setAnimation(null);
+    //    } else {
+    //        marker.setAnimation(google.maps.Animation.BOUNCE);
+    //    }
+    //}
 
     //Function to access googles maps search bar
     function codeAddress(map) {
@@ -99,6 +109,8 @@
         var marker = new google.maps.Marker({
             position: tempLocation,
             map: theMap,
+            Icon: createIcon,
+            animation: google.maps.Animation.DROP,
         });
 
         var infowindow = new google.maps.InfoWindow({
@@ -139,7 +151,8 @@
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(plottedFish[i].fLatitdue, plottedFish[i].fLongitude),
                     map: map,
-                    icon: Icons[plottedFish[i].fishTypeId-1]
+                    icon: Icons[plottedFish[i].fishTypeId-1],
+                    animation: google.maps.Animation.DROP
 
                 });
 
@@ -170,6 +183,7 @@
                 tempLat = event.latLng.lat();
                 tempLng = event.latLng.lng();
             });
+          
     }
    
     google.maps.event.addDomListener(window, 'load', initialize)
