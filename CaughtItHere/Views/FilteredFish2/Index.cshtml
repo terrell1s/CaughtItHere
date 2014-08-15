@@ -4,6 +4,11 @@
     ViewBag.Title = "Home Page";
 }
 
+<head>
+    <title>CaughtItHere</title>
+    <script type="text/javascript" src="~/Scripts/util-functions.js"></script>
+    <script type="text/javascript" src="~/Scripts/clear-default-text.js"></script>
+</head>
 <style type="text/css">
     html {
         height: 50%;
@@ -176,7 +181,7 @@
                                       <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Filter Fish</strong></button></form>
                                       <br />
                                       <div id="panel">
-                                          <input id="address" type="text" value="">
+                                          <input id="address" type="text" value="Enter Zip Code" class="cleardefault">
                                           <input type="button" class="btn-xs" value="Search" onclick="codeAddress(map)">
                                       </div>
                                       <br />

@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<head>
+    <script type="text/javascript" src="util-functions.js"></script>
+    <script type="text/javascript" src="~/Scripts/"></script>
+    <title>CaughtItHere</title>
+</head>
 
 <style type="text/css">
     html {
@@ -186,7 +191,7 @@
                                   <div id="leftside" style="width:18%">
                                       <img style="padding-top:60px" src="http://oi62.tinypic.com/14n0j0g.jpg" />
                                       <form action="~/Fish/FishByType" method="post"> 
-                                      <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Search by Fish</strong></button></form>
+                                      <button type="submit" class="btn btn-primary btn-lg cleardefault" style="margin-top: 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Filter Fish</strong></button></form>
                                       
                                       <div id="panel" style="margin-top: 20px; margin-bottom: 10px">
                                           <input id="address" type="text" value="Enter Zip Code" style="margin-top: 10px">
