@@ -4,6 +4,11 @@
     ViewBag.Title = "Home Page";
 }
 
+<head>
+    <title>CaughtItHere</title>
+    <script type="text/javascript" src="~/Scripts/util-functions.js"></script>
+    <script type="text/javascript" src="~/Scripts/clear-default-text.js"></script>
+</head>
 <style type="text/css">
     html {
         height: 50%;
@@ -171,19 +176,37 @@
                           <div class="row">
 
                               <div style="float:left" class="col-xs-3" id="left">
-                                  <div id="leftside" style="width:18%">
+                                  
                                       <img style="padding-top:60px" src="http://oi62.tinypic.com/14n0j0g.jpg" />
+
+                                  <h3>Instructions</h3>
+                                  <p style="font-size:small">
+                                      Use the <em>Search by Fish</em> button to<br />
+                                       look for <strong>fish by their type</strong> <br />
+                                      or by the <strong>date(s) caught</strong> or use the<br />
+                                       search bar to find fish by their <strong>area code</strong>.<br /><br />
+
+                                      To view <strong>details</strong> of plotted fish,<br />
+                                       click on a fish icon that has been placed on the map.<br /><br />
+                                      To <strong>plot a fish</strong>, simply right click<br />
+                                       on the map at the estimated point of the caught fish <br />
+                                       and complete the details form.<br />
+                                      <br />
+                                      Go ahead, try it out and <strong>tell us <br />
+                                       all about your lastest catch!</strong>
+                                  </p>
+
                                       <form action="~/Fish/FishByType" method="post"> <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Filter Fish</strong></button></form>
                                       <br />
                                       <div id="panel">
-                                          <input id="address" type="text" value="">
+                                          <input id="address" type="text" value="Enter Zip Code" class="cleardefault">
                                           <input type="button" class="btn-xs" value="Search" onclick="codeAddress(map)">
                                       </div>
                                       <br />
                                   </div>
                               </div>
                           </div>
-                      </div>
+                      
 
 
 

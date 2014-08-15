@@ -10,7 +10,7 @@
 @*@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()*@
-<form action="/Fish/Create" method="post" enctype="multipart/form-data">
+<form action="/Fish/Create" method="post" enctype="multipart/form-data" style="margin-left: 20px">
 
     <div class="form-horizontal">
 
@@ -58,7 +58,7 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Image, "Do you have a picture of the Fish?", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Image, "Do you have a picture of the fish?", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <label for="Fishphoto">Photo:</label>
                 <input type="file" name="Fishphoto" id="Fishphoto" />

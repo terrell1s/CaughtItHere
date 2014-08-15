@@ -46,6 +46,7 @@ namespace CaughtItHere.Controllers
         public ActionResult DNR()
         {
             return Redirect("http://www.mdnr-elicense.com/Welcome/Default.aspx");
+      
         }
 
         public ActionResult Regulations()
