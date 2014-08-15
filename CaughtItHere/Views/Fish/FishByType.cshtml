@@ -2,38 +2,44 @@
     ViewBag.Title = "FishByType";
 }
 
-<h3>Filter your fish by the type of fish and date caught!</h3>
+@*<h3>Search by fish type and date caught</h3>*@ 
 
 
-<div>
-        <form name="input" action="~/FilteredFish2/Index" method="get">
-        <input type="checkbox" name="fish" value="0"><Strong>Select All</Strong><br>
-        <input type="checkbox" name="fish" value="1">Bowfin <br>
-        <input type="checkbox" name="fish" value="2">BullHead<br>
-        <input type="checkbox" name="fish" value="3">Carp<br>
-        <input type="checkbox" name="fish" value="4">CatFish<br>
-        <input type="checkbox" name="fish" value="5">Herring<br>
-        <input type="checkbox" name="fish" value="6">Largemouth<br>
-        <input type="checkbox" name="fish" value="7">Muskellunge<br>
-        <input type="checkbox" name="fish" value="8">Pan Fish <br>
-        <input type="checkbox" name="fish" value="9">Pike<br>
-        <input type="checkbox" name="fish" value="10">Rock Bass<br>
-        <input type="checkbox" name="fish" value="11">Salmon<br>
-        <input type="checkbox" name="fish" value="12">Smallmouth Bass<br>
-        <input type="checkbox" name="fish" value="13">Smelt<br>
-        <input type="checkbox" name="fish" value="14">Sturgeon<br>
-        <input type="checkbox" name="fish" value="15">Trout<br>
-        <input type="checkbox" name="fish" value="16">Walleye<br>
-        <input type="checkbox" name="fish" value="17">White Bass<br>
-        <input type="checkbox" name="fish" value="18">White Fish<br>
-        <input type="checkbox" name="fish" value="19">White/Longnos<br>
-        <input type="checkbox" name="fish" value="20">Yellow Perch<br>
-            Fish Caught After: &nbsp  <input type="date" name="startDateFilter" id="startDate"><br />
-            Fish Caught Before: <input type="date" name="endDateFilter" id="endDate"><br />
-        <br />
-        <input type="submit" value="submit">
+<div style="margin-left: 20px">
+    <form name="input" action="~/FilteredFish2/Index" method="get">
+        <div>
+            <input type="checkbox" name="fish" value="0"><Strong>  SELECT ALL</Strong><br>
+            <input type="checkbox" name="fish" value="1">  Bowfin <br>
+            <input type="checkbox" name="fish" value="2">  Bullhead<br>
+            <input type="checkbox" name="fish" value="3">  Carp<br>
+            <input type="checkbox" name="fish" value="4">  Catish<br>
+            <input type="checkbox" name="fish" value="5">  Herring<br>
+            <input type="checkbox" name="fish" value="6">  Largemouth Bass<br>
+            <input type="checkbox" name="fish" value="7">  Muskellunge<br>
+            <input type="checkbox" name="fish" value="8">  Pan Fish <br>
+            <input type="checkbox" name="fish" value="9">  Pike<br>
+            <input type="checkbox" name="fish" value="10">  Rock Bass<br>
+            <input type="checkbox" name="fish" value="11">  Salmon<br>
+            <input type="checkbox" name="fish" value="12">  Smallmouth Bass<br>
+            <input type="checkbox" name="fish" value="13">  Smelt<br>
+            <input type="checkbox" name="fish" value="14">  Sturgeon<br>
+            <input type="checkbox" name="fish" value="15">  Trout<br>
+            <input type="checkbox" name="fish" value="16">  Walleye<br>
+            <input type="checkbox" name="fish" value="17">  White Bass<br>
+            <input type="checkbox" name="fish" value="18">  White Fish<br>
+            <input type="checkbox" name="fish" value="19">  White/Longnose<br>
+            <input type="checkbox" name="fish" value="20">  Yellow Perch<br>
+         </div> 
+
+        <div style="margin-top: 10px">
+            Start Date: <input type="date" name="startDateFilter" id="startDate" style="margin-bottom: 5px; padding: 1px;"><br />
+            End Date:   <input type="date" name="endDateFilter" id="endDate" style="margin-bottom: 5px; padding: 1px;"><br />
+            <input type="submit" value="Search" style="margin-top: 10px">
+        </div>
+
     </form>
-    <script>
+  
+      <script>
         function checkAll(eventInfo)
         {
             var option = document.getElementById("selectFish");
