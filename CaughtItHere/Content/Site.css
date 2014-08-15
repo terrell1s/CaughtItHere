@@ -3,27 +3,29 @@
     padding-bottom: 0;
     background-color:#0f5c6d;
     color:#a7de1d;
-    background: url("http://www.sportwallpapers.org/images/wallpapers-desktop-wallpaper-resolution-fishing_122705.jpg") no-repeat fixed left bottom ;
+   font-family: 'Century Gothic';
+     background: url("http://www.sportwallpapers.org/images/wallpapers-desktop-wallpaper-resolution-fishing_122705.jpg") no-repeat fixed left bottom ;
 }
 
 .searchButton {
-    background-color: #a17558;
+    background-color: #BFAD47;
     color: #333333;
     border-color: #333333;
 }
 
 .smSearchBtn {
-    background-color: #a17558;
+    background-color: #BFAD47;
     color: #333333;
     border-color: #333333;
 }
 
 .smInfoBtn {
-    background-color: #a17558;
+    background-color: #BFAD47;
     color: #333333;
     border-color: #333333;
 }
 
+<<<<<<< HEAD
     .rightpicturetop{
         position:absolute;
         left:0;
@@ -40,6 +42,16 @@
         bottom:0;
 
     }
+=======
+.socMediaLogIn{
+    float:left;
+}
+
+.divImageLure{
+
+}
+
+>>>>>>> origin/master
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
