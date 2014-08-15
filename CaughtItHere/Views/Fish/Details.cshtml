@@ -10,62 +10,67 @@
         @*<dt>
                 <h1>@Html.DisplayNameFor(model => model.FishType.Name)</h1>
             </dt>*@
-    <div style="float:left">
+        <div style="float:left">
 
-@*<h2>Details</h2>*@
+            @*<h2>Details</h2>*@
 
-<div>
-    @*<h4>Fish</h4>*@
-    <hr />
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.FishType.Name)
-        </dt>*@
-        <dd>
-            <h1>@Html.DisplayFor(model => model.FishType.Name)</h1>
-        </dd>
-        
-        <dt>
-            <h4>@Html.DisplayNameFor(model => model.Length):</h4>
-        </dt>
-        <dd>
-          <h4>@Html.DisplayFor(model => model.Length)<p>inches</p></h4>
-        </dd>
-        
-        <dt>
-            <h4>@Html.DisplayNameFor(model => model.Weight):</h4>
-        </dt>
-        <dd>
-           <h4>@Html.DisplayFor(model => model.Weight)<p>lbs.</p></h4>
-        </dd>
-        <dt>
-            <h4>Date Caught:</h4>
-        </dt>
-        <dd>
-           <h4>@Html.DisplayFor(model => model.TimeDate)</h4>
-        </dd>
-        <dt>
-            <h4>@Html.DisplayNameFor(model => model.LureType):</h4>
-        </dt>
-        <dd>
-           <h4>@Html.DisplayFor(model => model.LureType)</h4>
-        </dd>
-        <dt>
-           <h4>@Html.DisplayNameFor(model => model.Comment)</h4>
-        </dt>
-        <dd>
-            <h4>@Html.DisplayFor(model => model.Comment)</h4>
-        </dd>
-     </div>
-        
-        <div class="fishLureImage">
-            <img width="480" height="320" style="float: right; border:double;box-shadow: 10px 10px 5px #808080;" src="@Url.Content(String.Format("~/Images/{0}", Model.Image))" alt="image" />
-        <br />
-            <img width="250" height="100"  style="float:right; border:double;box-shadow: 10px 10px 5px #808080; margin-top:40px;" src="@Url.Content(String.Format("~/Images/{0}", Model.ImageLure))" alt="image" />
+            <div>
+                @*<h4>Fish</h4>*@
+                <hr />
+                <dl class="dl-horizontal">
+                    @*<dt>
+                            @Html.DisplayNameFor(model => model.FishType.Name)
+                        </dt>*@
+                    <dd>
+                        <h1>@Html.DisplayFor(model => model.FishType.Name)</h1>
+                    </dd>
+
+                    <dt>
+                        <h4>@Html.DisplayNameFor(model => model.Length):</h4>
+                    </dt>
+                    <dd>
+                        <h4>@Html.DisplayFor(model => model.Length)<p>inches</p></h4>
+                    </dd>
+
+                    <dt>
+                        <h4>@Html.DisplayNameFor(model => model.Weight):</h4>
+                    </dt>
+                    <dd>
+                        <h4>@Html.DisplayFor(model => model.Weight)<p>lbs.</p></h4>
+                    </dd>
+                    <dt>
+                        <h4>Date Caught:</h4>
+                    </dt>
+                    <dd>
+                        <h4>@Html.DisplayFor(model => model.TimeDate)</h4>
+                    </dd>
+                    <dt>
+                        <h4>@Html.DisplayNameFor(model => model.LureType):</h4>
+                    </dt>
+                    <dd>
+                        <h4>@Html.DisplayFor(model => model.LureType)</h4>
+                    </dd>
+                    <dt>
+                        <h4>@Html.DisplayNameFor(model => model.Comment)</h4>
+                    </dt>
+                    <dd>
+                        <h4>@Html.DisplayFor(model => model.Comment)</h4>
+                    </dd>
+            </div>
+
+            <div class="rightpicturebottom" style="padding-top:10%">
+                <img width="480" height="320" style="float: right; border:double;box-shadow: 10px 10px 5px #808080;" src="@Url.Content(String.Format("~/Images/{0}", Model.Image))" alt="image" />
+                </div>
+                <br />
+                <hr />
+                <br />
+            <div class ="rightpicturetop" style="padding-bottom:20px; padding-top:10%">
+                <img width="250" height="100" style="float:right; border:double;box-shadow: 10px 10px 5px #808080; margin-top:40px;" src="@Url.Content(String.Format("~/Images/{0}", Model.ImageLure))" alt="image" />
+            </div>
+            </div>
         </div>
-      </div>
 
-      
+
 
     </dl>
 

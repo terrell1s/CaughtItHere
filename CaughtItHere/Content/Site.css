@@ -24,6 +24,23 @@
     border-color: #333333;
 }
 
+    .rightpicturetop{
+        position:absolute;
+        left:0;
+        right:25%;
+        top:0;
+        bottom:30%;
+
+}
+    .rightpicturebottom{
+        position:absolute;
+        left:0;
+        right:25%;
+        top:30%;
+        bottom:0;
+
+    }
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 0;
