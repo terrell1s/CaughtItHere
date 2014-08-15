@@ -2,8 +2,26 @@
     padding-top: 90px;
     padding-bottom: 0;
     background-color:#0f5c6d;
-    color:#ff6a00;
+    color:#a7de1d;
     background: url("http://www.sportwallpapers.org/images/wallpapers-desktop-wallpaper-resolution-fishing_122705.jpg") no-repeat fixed left bottom ;
+}
+
+.searchButton {
+    background-color: #a17558;
+    color: #333333;
+    border-color: #333333;
+}
+
+.smSearchBtn {
+    background-color: #a17558;
+    color: #333333;
+    border-color: #333333;
+}
+
+.smInfoBtn {
+    background-color: #a17558;
+    color: #333333;
+    border-color: #333333;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -18,3 +36,4 @@ select,
 textarea {
     max-width: 280px;
 }
+

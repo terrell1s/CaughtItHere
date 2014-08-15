@@ -1,12 +1,12 @@
-import url("//fonts.googleapis.com/css?family=Raleway:400,700");
-/*!
+/*import url("//fonts.googleapis.com/css?family=Raleway:400,700");
+!
  * Bootswatch v3.2.0
  * Homepage: http://bootswatch.com
  * Copyright 2012-2014 Thomas Park
  * Licensed under MIT
  * Based on Bootstrap
-*/
-/*! normalize.css v3.0.1 | MIT License | git.io/normalize */
+
+! normalize.css v3.0.1 | MIT License | git.io/normalize 
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -1380,13 +1380,13 @@ pre code {
 }
 .pre-scrollable {
   max-height: 340px;
-  /*overflow-y: scroll;*/
+  overflow-y: scroll;
 }
 .container {
-  /*margin-right: auto;
+  margin-right: auto;
   margin-left: auto;
   padding-left: 0;
-  padding-right: 0;*/
+  padding-right: 0;
 }
 @media (min-width: 768px) {
   .container {
@@ -6303,7 +6303,7 @@ body{
 }
 
 body{
-  	padding-top:100px; /*padding for navbar*/
+  	padding-top:100px; padding for navbar
 }
 
 
@@ -6327,5 +6327,5 @@ body{
     position: absolute;
     right: 0;
     top: 60px;
-    bottom: 0;
-}
+    bottom:*/ 
+

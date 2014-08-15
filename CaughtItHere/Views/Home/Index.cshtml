@@ -41,7 +41,7 @@
     
     //Infowindow to create new fish
     var createNewFish = "<p><strong>Caught a fish here?</strong></p>" +
-                       "<center><input type='button' class='btn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
+                       "<center><input type='button' class='smInfoBtn' value='Yes' onclick='plotNewFish(tempLat, tempLng)' id='newFish'/></center>";
 
     //Drop a pin and redirect to the create page
     function plotNewFish(x, y) {
@@ -149,7 +149,7 @@
                 var infocontent = "<p><strong>"+fishTypes[plottedFish[i].fishTypeId-1]+"</strong></p>" +
                     "<p>"+plottedFish[i].fishLength+' inches'+"</p>" +
                     "<p>"+plottedFish[i].fishWeight+' lbs'+"</p>" +
-                        "<center><input type='button' class='btn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
+                        "<center><input type='button' class='smInfoBtn' value='More info' onclick='getDetails("+plottedFish[i].id+")' id='theDetails'/></center>";
 
                 //Display the infowindow
                 infowindow.setContent(infocontent);
@@ -186,11 +186,11 @@
                                   <div id="leftside" style="width:18%">
                                       <img style="padding-top:60px" src="http://oi62.tinypic.com/14n0j0g.jpg" />
                                       <form action="~/Fish/FishByType" method="post"> 
-                                      <button type="submit" class="btn btn-primary btn-lg" style="margin-top: 50px;background-color:#ffffff; color: #ff6a00; border-color:#ff6a00"><strong>Search by Fish</strong></button></form>
+                                      <button type="submit" class="searchButton"><strong>Search by Fish</strong></button></form>
                                       
                                       <div id="panel" style="margin-top: 20px; margin-bottom: 10px">
                                           <input id="address" type="text" placeholder="Enter Zip Code" style="margin-top: 10px">
-                                          <input type="button" class="btn-xs" value="Search" onclick="codeAddress(map)">
+                                          <input type="button" class="smSearchBtn" value="Search" onclick="codeAddress(map)">
                                       </div>
                                       <br />
                                   </div>
